@@ -20,5 +20,6 @@ export default {
 
 body {
   font-family: Ubuntu, sans-serif;
+  margin: 0;
 }
 </style>
