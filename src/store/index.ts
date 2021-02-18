@@ -1,8 +1,10 @@
 import { createStore } from 'vuex';
+import { seasons, SeasonsModule } from './seasons';
 
-export default createStore({
-  state: {},
-  mutations: {},
-  actions: {},
-  modules: {}
+type PresenceStore = SeasonsModule;
+
+export default createStore<PresenceStore>({
+  modules: {
+    seasons
+  }
 });
