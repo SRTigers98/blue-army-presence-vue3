@@ -22,7 +22,9 @@ export default defineComponent({
 });
 </script>
 
-<style>
+<style lang="scss">
+@use "assets/style/material";
+
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
 body {

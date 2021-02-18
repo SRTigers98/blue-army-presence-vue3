@@ -36,8 +36,3 @@ export default defineComponent({
   }
 });
 </script>
-
-<style lang="scss" scoped>
-@use "~@material/tab-indicator/mdc-tab-indicator";
-@use "~@material/tab/mdc-tab";
-</style>

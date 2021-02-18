@@ -23,8 +23,3 @@ export default defineComponent({
   }
 });
 </script>
-
-<style lang="scss" scoped>
-@use "~@material/tab-bar/mdc-tab-bar";
-@use "~@material/tab-scroller/mdc-tab-scroller";
-</style>

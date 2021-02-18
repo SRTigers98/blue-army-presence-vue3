@@ -13,10 +13,6 @@ export default defineComponent({});
 </script>
 
 <style lang="scss" scoped>
-@use "~@material/card";
-
-@include card.core-styles;
-
 $spacing: 0.5rem;
 
 .presence-card {

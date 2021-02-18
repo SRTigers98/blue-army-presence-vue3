@@ -41,9 +41,3 @@ export default defineComponent({
   }
 });
 </script>
-
-<style lang="scss" scoped>
-@use "~@material/button/button";
-
-@include button.core-styles;
-</style>

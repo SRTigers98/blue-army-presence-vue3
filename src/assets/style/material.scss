@@ -1,0 +1,18 @@
+// Material TopAppBar
+@use "~@material/top-app-bar/mdc-top-app-bar";
+
+// Material Tab
+@use "~@material/tab-bar/mdc-tab-bar";
+@use "~@material/tab-scroller/mdc-tab-scroller";
+@use "~@material/tab-indicator/mdc-tab-indicator";
+@use "~@material/tab/mdc-tab";
+
+// Material Card
+@use "~@material/card";
+
+// Material Button
+@use "~@material/button/button";
+
+// Include Styles
+@include card.core-styles;
+@include button.core-styles;

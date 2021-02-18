@@ -21,8 +21,6 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-@use "~@material/top-app-bar/mdc-top-app-bar";
-
 .presence-header {
   position: sticky;
 }
