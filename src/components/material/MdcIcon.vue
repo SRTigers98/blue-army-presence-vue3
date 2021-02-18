@@ -1,7 +1,5 @@
 <template>
-  <button class="mdc-icon-button material-icons">
-    {{ iconName }}
-  </button>
+  <span class="material-icons">{{ iconName }}</span>
 </template>
 
 <script lang="ts">
@@ -17,8 +15,6 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" scoped>
-@use "~@material/icon-button";
+<style scoped>
 
-@include icon-button.core-styles;
 </style>
