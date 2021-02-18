@@ -22,3 +22,8 @@ jobs:
         run: npm run lint
       - name: Build
         run: npm run build
+      - name: Upload Build Files
+        uses: actions/upload-artifact@v2.2.2
+        with:
+          name: blue-army-presence
+          path: dist/**
