@@ -24,10 +24,9 @@ export default defineComponent({
 
 <style>
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap');
 
 body {
-  font-family: Ubuntu, sans-serif;
+  font-family: Roboto, sans-serif;
   margin: 0;
   height: 100vh;
 }
@@ -42,6 +41,7 @@ body {
   flex-grow: 1;
   overflow-x: hidden;
   overflow-y: auto;
+  background-color: lightgray;
 }
 
 .page-slide-enter-active {
@@ -54,7 +54,7 @@ body {
 
 @keyframes slide-in {
   from {
-    transform: translateX(-50px);
+    transform: translateX(50px);
     opacity: 0;
   }
   to {
@@ -69,7 +69,7 @@ body {
     opacity: 1;
   }
   to {
-    transform: translateX(50px);
+    transform: translateX(-50px);
     opacity: 0;
   }
 }
