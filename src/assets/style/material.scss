@@ -1,3 +1,19 @@
+// Import Presence Colors
+@use "presence-color";
+
+// Adjust Material Theme
+@use "~@material/theme" with (
+  $primary: presence-color.$primary,
+  $secondary: presence-color.$secondary,
+  $background: presence-color.$background,
+  $surface: presence-color.$surface,
+  $error: presence-color.$error,
+  $on-primary: presence-color.$on-primary,
+  $on-secondary: presence-color.$on-secondary,
+  $on-surface: presence-color.$on-surface,
+  $on-error: presence-color.$on-error
+);
+
 // Material TopAppBar
 @use "~@material/top-app-bar/mdc-top-app-bar";
 
