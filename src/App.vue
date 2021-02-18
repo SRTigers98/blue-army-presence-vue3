@@ -24,6 +24,7 @@ export default defineComponent({
 
 <style lang="scss">
 @use "assets/style/material";
+@use "assets/style/presence-route-animation";
 
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
@@ -44,35 +45,5 @@ body {
   overflow-x: hidden;
   overflow-y: auto;
   background-color: lightgray;
-}
-
-.page-slide-enter-active {
-  animation: slide-in 0.3s ease-out;
-}
-
-.page-slide-leave-active {
-  animation: slide-out 0.3s ease-in;
-}
-
-@keyframes slide-in {
-  from {
-    transform: translateX(50px);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-@keyframes slide-out {
-  from {
-    transform: translateX(0px);
-    opacity: 1;
-  }
-  to {
-    transform: translateX(-50px);
-    opacity: 0;
-  }
 }
 </style>
