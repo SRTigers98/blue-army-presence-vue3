@@ -1,7 +1,7 @@
 <template>
   <section class="presence-container--flex">
     <MdcCard v-for="season in seasons" :key="season.id"
-             class="presence-seasons__card" :class="{'presence-seasons__card--active': season.isCurrentSeason}">
+             class="presence-seasons__card" :class="{'presence-seasons__card--active': season.id === currentSeasonId}">
       <h2>{{ season.name }}</h2>
       <hr>
       <nav class="presence-seasons__card-actions">
@@ -24,10 +24,17 @@ export default defineComponent({
     MdcButton
   },
   setup() {
-    const seasons = computed(() => useStore().getters['seasons/getSeasons'] as Season[]);
+    const store = useStore();
+
+    const seasons = computed(() => {
+      return store.getters['seasons/seasons'] as Season[];
+    });
+
+    const currentSeasonId = computed(() => store.getters['seasons/currentSeasonId'] as string);
 
     return {
-      seasons
+      seasons,
+      currentSeasonId
     };
   }
 });
@@ -44,7 +51,7 @@ export default defineComponent({
 }
 
 .presence-seasons__card--active {
-  border: 2px solid presence-color.$primary;
+  border: 0.25rem solid presence-color.$primary;
 }
 
 .presence-seasons__card-actions {
