@@ -1,6 +1,8 @@
 <template>
   <MdcCard>
-    <h1>Blue Army Presence</h1>
+    <section class="presence-container--flex">
+      <h1>Blue Army Presence</h1>
+    </section>
   </MdcCard>
 </template>
 
@@ -14,3 +16,7 @@ export default defineComponent({
   }
 });
 </script>
+
+<style lang="scss" scoped>
+@use "../assets/style/presence-container";
+</style>
