@@ -1,3 +1,16 @@
 <template>
-  <h1>Blue Army Presence</h1>
+  <MdcCard>
+    <h1>Blue Army Presence</h1>
+  </MdcCard>
 </template>
+
+<script lang="ts">
+import { defineComponent } from 'vue';
+import { MdcCard } from "../components";
+
+export default defineComponent({
+  components: {
+    MdcCard
+  }
+});
+</script>
