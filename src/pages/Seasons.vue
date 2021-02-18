@@ -1,7 +1,7 @@
 <template>
   <MdcCard>
     <section class="presence-container--flex">
-      <h1>About</h1>
+      <h1>Seasons</h1>
     </section>
   </MdcCard>
 </template>

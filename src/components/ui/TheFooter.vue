@@ -5,7 +5,7 @@
         <div class="mdc-tab-scroller__scroll-area">
           <div class="mdc-tab-scroller__scroll-content">
             <TabButton path-name="home" icon-name="home" />
-            <TabButton path-name="about" icon-name="info" />
+            <TabButton path-name="seasons" icon-name="sports_hockey" />
           </div>
         </div>
       </div>
