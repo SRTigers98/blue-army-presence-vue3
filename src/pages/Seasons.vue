@@ -5,7 +5,7 @@
       <h2>{{ season.name }}</h2>
       <hr>
       <nav class="presence-seasons__card-actions">
-        <MdcButton title="Edit" mode="outlined" />
+        <MdcButton title="Edit" mode="outlined" :link="getSeasonEditLink(season.id)" />
         <MdcButton title="Open" />
       </nav>
     </MdcCard>
@@ -26,15 +26,16 @@ export default defineComponent({
   setup() {
     const store = useStore();
 
-    const seasons = computed(() => {
-      return store.getters['seasons/seasons'] as Season[];
-    });
+    const seasons = computed(() => store.getters['seasons/seasons'] as Season[]);
 
     const currentSeasonId = computed(() => store.getters['seasons/currentSeasonId'] as string);
 
+    const getSeasonEditLink = (seasonId: string) => ({ name: 'season:edit', params: { id: seasonId } });
+
     return {
       seasons,
-      currentSeasonId
+      currentSeasonId,
+      getSeasonEditLink
     };
   }
 });
