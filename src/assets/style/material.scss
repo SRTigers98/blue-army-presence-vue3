@@ -29,6 +29,17 @@
 // Material Button
 @use "~@material/button/button";
 
+// Material TextField
+@use "~@material/floating-label/mdc-floating-label";
+@use "~@material/line-ripple/mdc-line-ripple";
+@use "~@material/notched-outline/mdc-notched-outline";
+@use "~@material/textfield";
+
+// Material Switch
+@use "~@material/switch";
+
 // Include Styles
 @include card.core-styles;
 @include button.core-styles;
+@include textfield.core-styles;
+@include switch.core-styles;
