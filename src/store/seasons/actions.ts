@@ -34,6 +34,8 @@ function setSeason(context: ActionContext<SeasonsModule, SeasonsModule>,
 
   if (payload.isCurrentSeason) {
     context.commit('currentSeasonId', seasonData.id);
+  } else if (context.getters.currentSeasonId === seasonData.id) {
+    context.commit('currentSeasonId', null);
   }
 }
 

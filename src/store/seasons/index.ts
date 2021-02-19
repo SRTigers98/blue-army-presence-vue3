@@ -11,7 +11,7 @@ export interface Season {
 
 export interface SeasonsModule {
   seasons: Season[];
-  currentSeasonId: string;
+  currentSeasonId?: string;
 }
 
 export const seasons = {
