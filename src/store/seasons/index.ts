@@ -1,5 +1,7 @@
 import { Module } from 'vuex';
 import getters from './getters';
+import mutations from './mutations';
+import actions from './actions';
 
 export interface Season {
   id: string;
@@ -29,5 +31,7 @@ export const seasons = {
     ],
     currentSeasonId: '2021'
   },
-  getters
+  getters,
+  mutations,
+  actions
 } as Module<SeasonsModule, SeasonsModule>;

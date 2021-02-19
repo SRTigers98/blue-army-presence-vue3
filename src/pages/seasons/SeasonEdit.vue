@@ -8,10 +8,11 @@
 
 <script lang="ts">
 import { computed, defineComponent, ref } from 'vue';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import { useStore } from 'vuex';
 import { MdcCard, SeasonEditForm } from '../../components';
 import { Season } from '../../store/seasons';
+import { UpdateSeasonPayload } from '../../store/seasons/actions';
 
 export default defineComponent({
   components: {
@@ -21,6 +22,7 @@ export default defineComponent({
   setup() {
     const store = useStore();
     const route = useRoute();
+    const router = useRouter();
 
     const season = computed(() => {
       const seasons = store.getters['seasons/seasons'] as Season[];
@@ -34,7 +36,14 @@ export default defineComponent({
     });
 
     const editSeason = (seasonData: { seasonName: string; isCurrentSeason: boolean }) => {
-      console.info(seasonData);
+      const editedSeason = {
+        id: season.value.id,
+        name: seasonData.seasonName,
+        created: season.value.created,
+        isCurrentSeason: seasonData.isCurrentSeason
+      } as UpdateSeasonPayload;
+      store.dispatch('seasons/updateSeason', editedSeason);
+      router.replace({ name: 'seasons' })
     };
 
     return {
