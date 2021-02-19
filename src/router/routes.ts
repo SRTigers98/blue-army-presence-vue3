@@ -7,7 +7,7 @@ export default [
     path: '/',
     component: Home,
     meta: {
-      homeTab: true
+      tabName: 'home'
     }
   },
   {
@@ -15,7 +15,7 @@ export default [
     path: '/seasons',
     component: Seasons,
     meta: {
-      seasonsTab: true
+      tabName: 'seasons'
     }
   },
   {
@@ -23,7 +23,7 @@ export default [
     path: '/seasons/:id',
     component: SeasonEdit,
     meta: {
-      seasonsTab: true
+      tabName: 'seasons'
     }
   }
 ] as RouteRecordRaw[];

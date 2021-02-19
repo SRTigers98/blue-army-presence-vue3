@@ -34,7 +34,7 @@ export default defineComponent({
   setup(props) {
     const route = useRoute();
 
-    const isCurrentTab = computed<boolean>(() => !!route.meta[props.tabName]);
+    const isCurrentTab = computed<boolean>(() => route.meta['tabName'] === props.tabName);
 
     return {
       isCurrentTab
