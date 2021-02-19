@@ -29,6 +29,9 @@
 // Material Button
 @use "~@material/button/button";
 
+// Material FAB
+@use "~@material/fab";
+
 // Material TextField
 @use "~@material/floating-label/mdc-floating-label";
 @use "~@material/line-ripple/mdc-line-ripple";
@@ -41,5 +44,6 @@
 // Include Styles
 @include card.core-styles;
 @include button.core-styles;
+@include fab.core-styles;
 @include textfield.core-styles;
 @include switch.core-styles;

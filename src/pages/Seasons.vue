@@ -9,19 +9,22 @@
         <MdcButton title="Open" />
       </nav>
     </MdcCard>
+    <MdcFAB icon-name="add" label="New Season"
+            :is-link="true" :to="{name: 'season:new'}" />
   </section>
 </template>
 
 <script lang="ts">
 import { computed, defineComponent } from 'vue';
 import { useStore } from 'vuex';
-import { MdcButton, MdcCard } from '../components';
+import { MdcButton, MdcCard, MdcFAB } from '../components';
 import { Season } from '../store/seasons';
 
 export default defineComponent({
   components: {
     MdcCard,
-    MdcButton
+    MdcButton,
+    MdcFAB
   },
   setup() {
     const store = useStore();
