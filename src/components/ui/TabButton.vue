@@ -1,11 +1,11 @@
 <template>
-  <router-link :to="{name: pathName}" class="mdc-tab mdc-tab--stacked" :class="{'mdc-tab--active': isCurrentPath}"
-               role="tab" :aria-selected="isCurrentPath">
+  <router-link :to="{name: pathName}" class="mdc-tab mdc-tab--stacked" :class="{'mdc-tab--active': isCurrentTab}"
+               role="tab" :aria-selected="isCurrentTab">
     <span class="mdc-tab__content">
       <span class="mdc-tab__icon material-icons" aria-hidden="true">{{ iconName }}</span>
       <span class="mdc-tab__text-label">{{ pathName }}</span>
     </span>
-    <span class="mdc-tab-indicator" :class="{'mdc-tab-indicator--active': isCurrentPath}">
+    <span class="mdc-tab-indicator" :class="{'mdc-tab-indicator--active': isCurrentTab}">
       <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
     </span>
     <span class="mdc-tab__ripple"></span>
@@ -25,13 +25,19 @@ export default defineComponent({
     pathName: {
       type: String,
       required: true
+    },
+    tabName: {
+      type: String,
+      required: true
     }
   },
   setup(props) {
-    const isCurrentPath = computed<boolean>(() => !!useRoute().matched.find(r => r.name === props.pathName));
+    const route = useRoute();
+
+    const isCurrentTab = computed<boolean>(() => !!route.meta[props.tabName]);
 
     return {
-      isCurrentPath
+      isCurrentTab
     };
   }
 });

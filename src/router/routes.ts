@@ -5,11 +5,17 @@ export default [
   {
     name: 'home',
     path: '/',
-    component: Home
+    component: Home,
+    meta: {
+      homeTab: true
+    }
   },
   {
     name: 'seasons',
     path: '/seasons',
-    component: Seasons
+    component: Seasons,
+    meta: {
+      seasonsTab: true
+    }
   }
 ] as Array<RouteRecordRaw>;
