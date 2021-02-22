@@ -5,7 +5,7 @@
       <h2>{{ season.name }}</h2>
       <hr>
       <nav class="presence-seasons__card-actions">
-        <MdcButton mode="danger">
+        <MdcButton mode="danger" @click="deleteSeason(season)">
           <MdcIcon icon-name="delete" />
         </MdcButton>
         <MdcButton mode="outlined" :link="getSeasonEditLink(season.id)">Edit</MdcButton>
@@ -38,10 +38,17 @@ export default defineComponent({
 
     const getSeasonEditLink = (seasonId: string) => ({ name: 'season:edit', params: { id: seasonId } });
 
+    const deleteSeason = (season: Season) => {
+      if (confirm(`Delete Season ${season.name}?`)) {
+        store.dispatch('seasons/deleteSeason', season.id);
+      }
+    };
+
     return {
       seasons,
       currentSeasonId,
-      getSeasonEditLink
+      getSeasonEditLink,
+      deleteSeason
     };
   }
 });
