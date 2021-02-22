@@ -9,8 +9,7 @@
         <MdcButton>Open</MdcButton>
       </nav>
     </MdcCard>
-    <MdcFAB icon-name="add" label="New Season"
-            :is-link="true" :to="{name: 'season:new'}" />
+    <MdcFAB icon-name="add" label="New Season" :link="{name: 'season:new'}" />
   </section>
 </template>
 

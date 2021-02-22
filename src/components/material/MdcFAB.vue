@@ -1,5 +1,5 @@
 <template>
-  <router-link v-if="isLink" class="mdc-fab presence-fab" :class="{'mdc-fab--extended': !!label}"
+  <router-link v-if="!!link" :to="link" class="mdc-fab presence-fab" :class="{'mdc-fab--extended': !!label}"
                :aria-label="iconName">
     <div class="mdc-fab__ripple"></div>
     <span class="mdc-fab__icon material-icons">{{ iconName }}</span>
@@ -14,7 +14,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, PropType } from 'vue';
+import { LocationAsRelativeRaw } from 'vue-router';
 
 export default defineComponent({
   props: {
@@ -25,9 +26,8 @@ export default defineComponent({
     label: {
       type: String
     },
-    isLink: {
-      type: Boolean,
-      default: false
+    link: {
+      type: Object as PropType<LocationAsRelativeRaw>
     }
   }
 });
