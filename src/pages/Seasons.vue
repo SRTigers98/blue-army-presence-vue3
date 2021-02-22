@@ -5,8 +5,8 @@
       <h2>{{ season.name }}</h2>
       <hr>
       <nav class="presence-seasons__card-actions">
-        <MdcButton title="Edit" mode="outlined" :link="getSeasonEditLink(season.id)" />
-        <MdcButton title="Open" />
+        <MdcButton mode="outlined" :link="getSeasonEditLink(season.id)">Edit</MdcButton>
+        <MdcButton>Open</MdcButton>
       </nav>
     </MdcCard>
     <MdcFAB icon-name="add" label="New Season"

@@ -21,8 +21,8 @@
       <label for="current-season">Is Current Season</label>
     </section>
     <section class="presence-form__actions">
-      <MdcButton title="Back" mode="outlined" type="button" @click="goBack" />
-      <MdcButton title="Save" />
+      <MdcButton mode="outlined" type="button" @click="goBack">Back</MdcButton>
+      <MdcButton>Save</MdcButton>
     </section>
   </form>
 </template>

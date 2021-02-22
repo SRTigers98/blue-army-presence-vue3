@@ -3,7 +3,7 @@
     <section class="presence-container--flex">
       <h1>Blue Army Presence</h1>
       <img src="../assets/img/logo.png" alt="Blue Army Logo" class="presence-home__logo">
-      <MdcButton title="Current Season" @click="goToCurrentSeason" />
+      <MdcButton @click="goToCurrentSeason">Current Season</MdcButton>
     </section>
   </MdcCard>
 </template>

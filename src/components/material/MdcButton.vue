@@ -1,13 +1,21 @@
 <template>
-  <button :class="buttonClass" @click="goToLink">
+  <router-link v-if="!!link" :to="link" :class="buttonClass">
     <span class="mdc-button__ripple" />
-    <span class="mdc-button__label">{{ title }}</span>
+    <span class="mdc-button__label">
+      <slot />
+    </span>
+  </router-link>
+  <button v-else :class="buttonClass">
+    <span class="mdc-button__ripple" />
+    <span class="mdc-button__label">
+      <slot />
+    </span>
   </button>
 </template>
 
 <script lang="ts">
 import { computed, defineComponent, PropType } from 'vue';
-import { LocationAsRelativeRaw, useRouter } from 'vue-router';
+import { LocationAsRelativeRaw } from 'vue-router';
 
 type MdcButtonMode = 'primary' | 'outlined';
 
@@ -24,10 +32,6 @@ function getButtonModeClass(buttonMode: MdcButtonMode): string {
 
 export default defineComponent({
   props: {
-    title: {
-      type: String,
-      required: true
-    },
     mode: {
       type: String as PropType<MdcButtonMode>,
       default: 'primary'
@@ -37,19 +41,10 @@ export default defineComponent({
     }
   },
   setup(props) {
-    const router = useRouter();
-
     const buttonClass = computed(() => `mdc-button ${getButtonModeClass(props.mode)}`);
 
-    const goToLink = () => {
-      if (props.link) {
-        router.push(props.link);
-      }
-    };
-
     return {
-      buttonClass,
-      goToLink
+      buttonClass
     };
   }
 });
