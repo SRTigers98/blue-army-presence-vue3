@@ -5,6 +5,9 @@
       <h2>{{ season.name }}</h2>
       <hr>
       <nav class="presence-seasons__card-actions">
+        <MdcButton mode="danger">
+          <MdcIcon icon-name="delete" />
+        </MdcButton>
         <MdcButton mode="outlined" :link="getSeasonEditLink(season.id)">Edit</MdcButton>
         <MdcButton>Open</MdcButton>
       </nav>
@@ -16,11 +19,12 @@
 <script lang="ts">
 import { computed, defineComponent } from 'vue';
 import { useStore } from 'vuex';
-import { MdcButton, MdcCard, MdcFAB } from '../components';
+import { MdcButton, MdcCard, MdcFAB, MdcIcon } from '../components';
 import { Season } from '../store/seasons';
 
 export default defineComponent({
   components: {
+    MdcIcon,
     MdcCard,
     MdcButton,
     MdcFAB

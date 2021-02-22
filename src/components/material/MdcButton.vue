@@ -17,7 +17,7 @@
 import { computed, defineComponent, PropType } from 'vue';
 import { LocationAsRelativeRaw } from 'vue-router';
 
-type MdcButtonMode = 'primary' | 'outlined';
+type MdcButtonMode = 'primary' | 'outlined' | 'danger';
 
 function getButtonModeClass(buttonMode: MdcButtonMode): string {
   switch (buttonMode) {
@@ -25,6 +25,8 @@ function getButtonModeClass(buttonMode: MdcButtonMode): string {
       return 'mdc-button--raised';
     case 'outlined':
       return 'mdc-button--outlined';
+    case 'danger':
+      return 'mdc-button--outlined presence-button--danger';
     default:
       return '';
   }
@@ -49,3 +51,11 @@ export default defineComponent({
   }
 });
 </script>
+
+<style lang="scss" scoped>
+@use "../../assets/style/presence-color";
+
+.presence-button--danger {
+  color: presence-color.$error !important;
+}
+</style>
