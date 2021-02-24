@@ -1,6 +1,7 @@
 import { RouteRecordRaw } from 'vue-router';
 import { Home } from '../pages';
-import seasonsRoutes from './seasonsRoutes';
+import seasonRoutes from './seasonRoutes';
+import memberRoutes from './memberRoutes';
 
 export default [
   {
@@ -11,5 +12,6 @@ export default [
       tabName: 'home'
     }
   },
-  ...seasonsRoutes
+  ...seasonRoutes,
+  ...memberRoutes
 ] as RouteRecordRaw[];
