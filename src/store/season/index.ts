@@ -4,7 +4,7 @@ import mutations from './mutations';
 import actions from './actions';
 import { SeasonModule } from '../../types';
 
-export const season = {
+export const season: Module<SeasonModule, SeasonModule> = {
   namespaced: true,
   state: {
     seasons: [
@@ -24,4 +24,4 @@ export const season = {
   getters,
   mutations,
   actions
-} as Module<SeasonModule, SeasonModule>;
+};
