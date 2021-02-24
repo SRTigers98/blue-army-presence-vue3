@@ -3,3 +3,8 @@ export interface Member {
   lastName: string;
   active: boolean;
 }
+
+// Store Module Type
+export interface MemberModule {
+  members: Member[];
+}

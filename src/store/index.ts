@@ -1,11 +1,13 @@
 import { createStore } from 'vuex';
+import { MemberModule, SeasonModule } from '../types';
 import { season } from './season';
-import { SeasonModule } from '../types';
+import { member } from './member';
 
-type PresenceStore = SeasonModule;
+type PresenceStore = SeasonModule & MemberModule;
 
 export default createStore<PresenceStore>({
   modules: {
-    season
+    season,
+    member
   }
 });
