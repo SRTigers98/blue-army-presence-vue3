@@ -5,7 +5,7 @@ export interface Season {
 }
 
 // Store Module Type
-export interface SeasonsModule {
+export interface SeasonModule {
   seasons: Season[];
   currentSeasonId?: string;
 }

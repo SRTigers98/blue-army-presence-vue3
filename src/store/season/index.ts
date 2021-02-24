@@ -2,9 +2,9 @@ import { Module } from 'vuex';
 import getters from './getters';
 import mutations from './mutations';
 import actions from './actions';
-import { SeasonsModule } from '../../types';
+import { SeasonModule } from '../../types';
 
-export const seasons = {
+export const season = {
   namespaced: true,
   state: {
     seasons: [
@@ -24,4 +24,4 @@ export const seasons = {
   getters,
   mutations,
   actions
-} as Module<SeasonsModule, SeasonsModule>;
+} as Module<SeasonModule, SeasonModule>;

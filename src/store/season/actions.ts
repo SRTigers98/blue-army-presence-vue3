@@ -1,7 +1,7 @@
 import { ActionContext, ActionTree } from 'vuex';
-import { CreateSeasonPayload, Season, SeasonsModule, UpdateSeasonPayload } from '../../types';
+import { CreateSeasonPayload, Season, SeasonModule, UpdateSeasonPayload } from '../../types';
 
-function setSeason(context: ActionContext<SeasonsModule, SeasonsModule>,
+function setSeason(context: ActionContext<SeasonModule, SeasonModule>,
                    payload: { id?: string; name: string; created?: Date; isCurrentSeason: boolean }) {
   const seasons = [...context.getters.seasons as Season[]];
 
@@ -27,7 +27,7 @@ function setSeason(context: ActionContext<SeasonsModule, SeasonsModule>,
   }
 }
 
-function deleteSeason(context: ActionContext<SeasonsModule, SeasonsModule>, seasonId: string) {
+function deleteSeason(context: ActionContext<SeasonModule, SeasonModule>, seasonId: string) {
   const seasons = [...context.getters.seasons as Season[]]
     .filter(s => s.id !== seasonId);
   context.commit('seasons', seasons);
@@ -40,4 +40,4 @@ export default {
   updateSeason: (context, payload: UpdateSeasonPayload) => setSeason(context, payload),
   createSeason: (context, payload: CreateSeasonPayload) => setSeason(context, payload),
   deleteSeason: (context, payload: string) => deleteSeason(context, payload)
-} as ActionTree<SeasonsModule, SeasonsModule>;
+} as ActionTree<SeasonModule, SeasonModule>;

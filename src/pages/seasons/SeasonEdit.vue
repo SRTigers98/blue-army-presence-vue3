@@ -24,10 +24,10 @@ export default defineComponent({
     const router = useRouter();
 
     const season = computed(() => {
-      const seasons = store.getters['seasons/seasons'] as Season[];
+      const seasons = store.getters['season/seasons'] as Season[];
       return seasons.find(s => s.id === route.params.id) as Season;
     });
-    const currentSeasonId = computed(() => store.getters['seasons/currentSeasonId'] as string);
+    const currentSeasonId = computed(() => store.getters['season/currentSeasonId'] as string);
 
     const seasonData = ref({
       seasonName: season.value?.name || '',
@@ -42,13 +42,13 @@ export default defineComponent({
           created: season.value.created,
           isCurrentSeason: seasonData.isCurrentSeason
         };
-        store.dispatch('seasons/updateSeason', editedSeason);
+        store.dispatch('season/updateSeason', editedSeason);
       } else {
         const createdSeason: CreateSeasonPayload = {
           name: seasonData.seasonName,
           isCurrentSeason: seasonData.isCurrentSeason
         };
-        store.dispatch('seasons/createSeason', createdSeason);
+        store.dispatch('season/createSeason', createdSeason);
       }
       router.replace({ name: 'seasons' })
     };
