@@ -1,17 +1,5 @@
 import { ActionContext, ActionTree } from 'vuex';
-import { Season, SeasonsModule } from './index';
-
-export interface UpdateSeasonPayload {
-  id: string;
-  name: string;
-  created: Date;
-  isCurrentSeason: boolean;
-}
-
-export interface CreateSeasonPayload {
-  name: string;
-  isCurrentSeason: boolean;
-}
+import { CreateSeasonPayload, Season, SeasonsModule, UpdateSeasonPayload } from '../../types';
 
 function setSeason(context: ActionContext<SeasonsModule, SeasonsModule>,
                    payload: { id?: string; name: string; created?: Date; isCurrentSeason: boolean }) {

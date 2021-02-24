@@ -20,7 +20,7 @@
 import { computed, defineComponent } from 'vue';
 import { useStore } from 'vuex';
 import { MdcButton, MdcCard, MdcFAB, MdcIcon } from '../components';
-import { Season } from '../store/seasons';
+import { Season } from '../types';
 
 export default defineComponent({
   components: {

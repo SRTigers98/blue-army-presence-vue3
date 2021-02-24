@@ -11,8 +11,7 @@ import { computed, defineComponent, ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useStore } from 'vuex';
 import { MdcCard, SeasonEditForm } from '../../components';
-import { Season } from '../../store/seasons';
-import { CreateSeasonPayload, UpdateSeasonPayload } from '../../store/seasons/actions';
+import { CreateSeasonPayload, Season, UpdateSeasonPayload } from '../../types';
 
 export default defineComponent({
   components: {

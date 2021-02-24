@@ -1,5 +1,6 @@
 import { createStore } from 'vuex';
-import { seasons, SeasonsModule } from './seasons';
+import { seasons } from './seasons';
+import { SeasonsModule } from '../types';
 
 type PresenceStore = SeasonsModule;
 

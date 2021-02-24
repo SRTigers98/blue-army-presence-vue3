@@ -2,17 +2,7 @@ import { Module } from 'vuex';
 import getters from './getters';
 import mutations from './mutations';
 import actions from './actions';
-
-export interface Season {
-  id: string;
-  name: string;
-  created: Date;
-}
-
-export interface SeasonsModule {
-  seasons: Season[];
-  currentSeasonId?: string;
-}
+import { SeasonsModule } from '../../types';
 
 export const seasons = {
   namespaced: true,
