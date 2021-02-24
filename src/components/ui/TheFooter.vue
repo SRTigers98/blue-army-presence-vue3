@@ -6,6 +6,7 @@
           <div class="mdc-tab-scroller__scroll-content">
             <TabButton path-name="home" icon-name="home" tab-name="home" />
             <TabButton path-name="seasons" icon-name="sports_hockey" tab-name="seasons" />
+            <TabButton path-name="members" icon-name="group" tab-name="members" />
           </div>
         </div>
       </div>
