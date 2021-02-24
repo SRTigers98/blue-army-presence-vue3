@@ -3,7 +3,6 @@
                role="tab" :aria-selected="isCurrentTab">
     <span class="mdc-tab__content">
       <span class="mdc-tab__icon material-icons" aria-hidden="true">{{ iconName }}</span>
-      <span class="mdc-tab__text-label">{{ pathName }}</span>
     </span>
     <span class="mdc-tab-indicator" :class="{'mdc-tab-indicator--active': isCurrentTab}">
       <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
