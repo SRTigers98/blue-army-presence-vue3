@@ -6,7 +6,7 @@
         {{ member.lastName }}, {{ member.firstName }}
       </h2>
       <menu class="presence-members__card-actions">
-        <MdcButton mode="danger">
+        <MdcButton mode="danger" @click="deleteMember(member)">
           <MdcIcon icon-name="delete" />
         </MdcButton>
         <MdcButton>Edit</MdcButton>
@@ -32,8 +32,15 @@ export default defineComponent({
 
     const members = computed(() => store.getters['member/members'] as Member[]);
 
+    const deleteMember = (member: Member) => {
+      if (confirm(`Delete user "${member.lastName}, ${member.firstName}"?`)) {
+        store.dispatch('member/deleteMember', member.id);
+      }
+    };
+
     return {
-      members
+      members,
+      deleteMember
     };
   }
 });
