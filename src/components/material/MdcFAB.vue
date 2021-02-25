@@ -35,6 +35,6 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .presence-fab {
-  margin: 1rem;
+  margin: 0.5rem;
 }
 </style>
