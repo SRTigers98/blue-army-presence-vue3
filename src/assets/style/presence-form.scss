@@ -1,0 +1,18 @@
+.presence-form__item {
+  width: 80%;
+  max-width: 350px;
+  margin: 0.75rem 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.presence-form__switch > label {
+  margin-left: 1rem;
+}
+
+.presence-form__actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
