@@ -2,6 +2,15 @@ export interface Season {
   id: string;
   name: string;
   created: Date;
+  games: SeasonGame[];
+}
+
+export interface SeasonGame {
+  id: string;
+  opponent: string;
+  home: boolean;
+  mode: string;
+  presentMembers: string[];
 }
 
 // Store Module Type

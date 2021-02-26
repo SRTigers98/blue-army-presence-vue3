@@ -9,10 +9,12 @@ export default function (context: ActionContext<SeasonModule, SeasonModule>,
   const seasonData: Season = {
     id: payload.id || (Math.random() * 10000).toFixed(0),
     name: payload.name,
-    created: payload.created || new Date()
+    created: payload.created || new Date(),
+    games: []
   };
 
   if (~seasonIndex) {
+    seasonData.games = seasons[seasonIndex].games;
     seasons[seasonIndex] = seasonData;
   } else {
     seasons.push(seasonData);
