@@ -9,7 +9,7 @@
           <MdcIcon icon-name="delete" />
         </MdcButton>
         <MdcButton mode="outlined" :link="getSeasonEditLink(season.id)">Edit</MdcButton>
-        <MdcButton>Open</MdcButton>
+        <MdcButton :link="getSeasonGamesLink(season.id)">Open</MdcButton>
       </nav>
     </MdcCard>
     <MdcFAB icon-name="add" label="New Season" :link="{name: 'season:new'}" />
@@ -37,6 +37,7 @@ export default defineComponent({
     const currentSeasonId = computed(() => store.getters['season/currentSeasonId'] as string);
 
     const getSeasonEditLink = (seasonId: string) => ({ name: 'season:edit', params: { seasonId: seasonId } });
+    const getSeasonGamesLink = (seasonId: string) => ({ name: 'season:games', params: { seasonId: seasonId } });
 
     const deleteSeason = (season: Season) => {
       if (confirm(`Delete Season "${season.name}"?`)) {
@@ -48,6 +49,7 @@ export default defineComponent({
       seasons,
       currentSeasonId,
       getSeasonEditLink,
+      getSeasonGamesLink,
       deleteSeason
     };
   }

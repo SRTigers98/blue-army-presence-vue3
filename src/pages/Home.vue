@@ -3,13 +3,15 @@
     <section class="presence-container--flex">
       <h1>Blue Army Presence</h1>
       <img src="../assets/img/logo.png" alt="Blue Army Logo" class="presence-home__logo">
-      <MdcButton @click="goToCurrentSeason">Current Season</MdcButton>
+      <MdcButton :link="currentSeasonRoute">Current Season</MdcButton>
     </section>
   </MdcCard>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { computed, defineComponent } from 'vue';
+import { useStore } from 'vuex';
+import { LocationAsRelativeRaw } from 'vue-router';
 import { MdcButton, MdcCard } from "../components";
 
 export default defineComponent({
@@ -18,11 +20,15 @@ export default defineComponent({
     MdcButton
   },
   setup() {
-    // todo go to current season
-    const goToCurrentSeason = () => console.info('Going to current season...');
+    const store = useStore();
+
+    const currentSeasonRoute = computed(() => {
+      const currentSeasonId = store.getters['season/currentSeasonId'] as string;
+      return { name: 'season:games', params: { seasonId: currentSeasonId } } as LocationAsRelativeRaw;
+    });
 
     return {
-      goToCurrentSeason
+      currentSeasonRoute
     };
   }
 });
