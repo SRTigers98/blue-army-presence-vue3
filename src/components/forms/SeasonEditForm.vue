@@ -1,13 +1,7 @@
 <template>
   <EditFormContainer :on-submit="submitForm">
     <section class="presence-form__item">
-      <label class="mdc-text-field mdc-text-field--filled" ref="seasonNameTextField">
-        <span class="mdc-text-field__ripple"></span>
-        <span class="mdc-floating-label" id="season-name">Season Name</span>
-        <input v-model.trim="seasonName" class="mdc-text-field__input" type="text" aria-labelledby="season-name"
-               required minlength="5">
-        <span class="mdc-line-ripple"></span>
-      </label>
+      <MdcTextField v-model="seasonName" required>Season Name</MdcTextField>
     </section>
     <section class="presence-form__item">
       <MdcSwitch v-model="isCurrentSeason">Is Current Season</MdcSwitch>
@@ -17,14 +11,14 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import { MDCTextField } from '@material/textfield/component';
 import EditFormContainer from './EditFormContainer.vue';
-import { MdcSwitch } from '../material';
+import { MdcSwitch, MdcTextField } from '../material';
 
 export default defineComponent({
   components: {
     EditFormContainer,
-    MdcSwitch
+    MdcSwitch,
+    MdcTextField
   },
   props: {
     name: {
@@ -50,9 +44,6 @@ export default defineComponent({
       isCurrentSeason,
       submitForm
     };
-  },
-  mounted() {
-    new MDCTextField(this.$refs.seasonNameTextField as Element);
   }
 });
 </script>
