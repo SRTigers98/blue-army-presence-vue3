@@ -9,3 +9,6 @@ export interface Member {
 export interface MemberModule {
   members: Member[];
 }
+
+// Store Action Types
+export type UpdateMemberPayload = Member;

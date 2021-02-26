@@ -10,9 +10,9 @@
 <script lang="ts">
 import { computed, defineComponent } from 'vue';
 import { useStore } from 'vuex';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import { MdcCard, MemberEditForm } from '../../components';
-import { Member } from '../../types';
+import { Member, UpdateMemberPayload } from '../../types';
 
 export default defineComponent({
   components: {
@@ -20,15 +20,22 @@ export default defineComponent({
     MemberEditForm
   },
   setup() {
+    const store = useStore();
     const route = useRoute();
+    const router = useRouter();
 
     const member = computed(() => {
-      const members = useStore().getters['member/members'] as Member[];
+      const members = store.getters['member/members'] as Member[];
       return members.find(m => m.id === route.params.memberId) as Member;
     });
 
     const editMember = (editedMember: { firstName: string; lastName: string; active: boolean }) => {
-      console.info(editedMember);
+      const updateData: UpdateMemberPayload = {
+        id: route.params.memberId as string,
+        ...editedMember
+      };
+      store.dispatch('member/updateMember', updateData);
+      router.replace({ name: 'members' });
     };
 
     return {
