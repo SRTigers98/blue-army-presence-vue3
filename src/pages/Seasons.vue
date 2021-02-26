@@ -36,7 +36,7 @@ export default defineComponent({
 
     const currentSeasonId = computed(() => store.getters['season/currentSeasonId'] as string);
 
-    const getSeasonEditLink = (seasonId: string) => ({ name: 'season:edit', params: { id: seasonId } });
+    const getSeasonEditLink = (seasonId: string) => ({ name: 'season:edit', params: { seasonId: seasonId } });
 
     const deleteSeason = (season: Season) => {
       if (confirm(`Delete Season "${season.name}"?`)) {

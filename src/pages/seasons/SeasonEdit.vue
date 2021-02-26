@@ -25,7 +25,7 @@ export default defineComponent({
 
     const season = computed(() => {
       const seasons = store.getters['season/seasons'] as Season[];
-      return seasons.find(s => s.id === route.params.id) as Season;
+      return seasons.find(s => s.id === route.params.seasonId) as Season;
     });
     const currentSeasonId = computed(() => store.getters['season/currentSeasonId'] as string);
 

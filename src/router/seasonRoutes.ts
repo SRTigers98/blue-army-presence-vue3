@@ -12,7 +12,7 @@ export default [
   },
   {
     name: 'season:edit',
-    path: '/seasons/:id/edit',
+    path: '/seasons/:seasonId/edit',
     component: SeasonEdit,
     meta: {
       tabName: 'seasons'
