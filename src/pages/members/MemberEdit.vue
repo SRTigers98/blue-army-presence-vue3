@@ -1,8 +1,8 @@
 <template>
   <MdcCard>
-    <MemberEditForm :first-name="member.firstName"
-                    :last-name="member.lastName"
-                    :active="member.active"
+    <MemberEditForm :first-name="member?.firstName || ''"
+                    :last-name="member?.lastName || ''"
+                    :active="member?.active || true"
                     @member-edit="editMember" />
   </MdcCard>
 </template>
@@ -30,11 +30,15 @@ export default defineComponent({
     });
 
     const editMember = (editedMember: { firstName: string; lastName: string; active: boolean }) => {
-      const updateData: UpdateMemberPayload = {
-        id: route.params.memberId as string,
-        ...editedMember
-      };
-      store.dispatch('member/updateMember', updateData);
+      if (route.params.memberId) {
+        const updateData: UpdateMemberPayload = {
+          id: route.params.memberId as string,
+          ...editedMember
+        };
+        store.dispatch('member/updateMember', updateData);
+      } else {
+        store.dispatch('member/createMember', editedMember);
+      }
       router.replace({ name: 'members' });
     };
 

@@ -17,5 +17,13 @@ export default [
     meta: {
       tabName: 'members'
     }
+  },
+  {
+    name: 'member:new',
+    path: '/members/new',
+    component: MemberEdit,
+    meta: {
+      tabName: 'members'
+    }
   }
 ] as RouteRecordRaw[];
