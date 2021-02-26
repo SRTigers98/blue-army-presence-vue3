@@ -11,4 +11,10 @@ export interface MemberModule {
 }
 
 // Store Action Types
+export interface CreateMemberPayload {
+  firstName: string;
+  lastName: string;
+  active: boolean;
+}
+
 export type UpdateMemberPayload = Member;
