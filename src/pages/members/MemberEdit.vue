@@ -2,7 +2,7 @@
   <MdcCard>
     <MemberEditForm :first-name="member?.firstName || ''"
                     :last-name="member?.lastName || ''"
-                    :active="member?.active || true"
+                    :active="member ? member.active : true"
                     @member-edit="editMember" />
   </MdcCard>
 </template>
