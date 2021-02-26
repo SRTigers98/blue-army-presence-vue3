@@ -1,22 +1,19 @@
 <template>
   <EditFormContainer :on-submit="submitForm">
     <section class="presence-form__item">
-      <MdcTextField v-model="memberFirstName" required>First Name</MdcTextField>
+      <MdcTextField v-model="memberFirstName" label="First Name" required />
     </section>
     <section class="presence-form__item">
-      <MdcTextField v-model="memberLastName" required>Last Name</MdcTextField>
+      <MdcTextField v-model="memberLastName" label="Last Name" required />
     </section>
     <section class="presence-form__item">
-      <MdcSwitch v-model="memberActive">
-        <span v-if="memberActive">Active</span>
-        <span v-else>Passive</span>
-      </MdcSwitch>
+      <MdcSwitch v-model="memberActive" :label="activeLabel" />
     </section>
   </EditFormContainer>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { computed, defineComponent, ref } from 'vue';
 import EditFormContainer from './EditFormContainer.vue';
 import { MdcSwitch, MdcTextField } from '../material';
 
@@ -45,6 +42,8 @@ export default defineComponent({
     const memberLastName = ref<string>(props.lastName);
     const memberActive = ref<boolean>(props.active);
 
+    const activeLabel = computed(() => memberActive.value ? 'Active' : 'Passive');
+
     const submitForm = () => context.emit(
         'member-edit',
         { firstName: memberFirstName.value, lastName: memberLastName.value, active: memberActive.value }
@@ -54,6 +53,7 @@ export default defineComponent({
       memberFirstName,
       memberLastName,
       memberActive,
+      activeLabel,
       submitForm
     };
   }

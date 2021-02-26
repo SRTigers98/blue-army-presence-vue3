@@ -8,7 +8,7 @@
     </div>
   </div>
   <label for="material-switch" class="presence-switch__label">
-    <slot />
+    {{ label }}
   </label>
 </template>
 
@@ -20,6 +20,10 @@ export default defineComponent({
   props: {
     modelValue: {
       type: Boolean
+    },
+    label: {
+      type: String,
+      required: true
     }
   },
   setup(props, context) {

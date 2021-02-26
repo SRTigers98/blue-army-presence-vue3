@@ -1,10 +1,10 @@
 <template>
   <EditFormContainer :on-submit="submitForm">
     <section class="presence-form__item">
-      <MdcTextField v-model="seasonName" required>Season Name</MdcTextField>
+      <MdcTextField v-model="seasonName" label="Season Name" required />
     </section>
     <section class="presence-form__item">
-      <MdcSwitch v-model="isCurrentSeason">Is Current Season</MdcSwitch>
+      <MdcSwitch v-model="isCurrentSeason" label="Is Current Season" />
     </section>
   </EditFormContainer>
 </template>

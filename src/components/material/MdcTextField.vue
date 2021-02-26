@@ -2,7 +2,7 @@
   <label class="mdc-text-field mdc-text-field--filled" ref="materialTextField">
     <span class="mdc-text-field__ripple"></span>
     <span class="mdc-floating-label" id="material-text">
-      <slot />
+      {{ label }}
     </span>
     <input v-model.trim="textValue" class="mdc-text-field__input" type="text" aria-labelledby="material-text"
            :required="required">
@@ -19,6 +19,10 @@ export default defineComponent({
     modelValue: {
       type: String,
       default: ''
+    },
+    label: {
+      type: String,
+      required: true
     },
     required: {
       type: Boolean,
