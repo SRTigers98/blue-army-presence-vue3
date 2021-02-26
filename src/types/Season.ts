@@ -9,7 +9,7 @@ export interface SeasonGame {
   id: string;
   opponent: string;
   home: boolean;
-  mode: string;
+  mode: 'regular' | 'playoffs';
   date: Date;
   presentMembers: string[];
 }
