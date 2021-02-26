@@ -1,13 +1,9 @@
 <template>
   <MdcCard>
-    <section class="presence-container--flex">
-      <h1>Member Edit</h1>
-      <ul>
-        <li>First Name: {{ member.firstName }}</li>
-        <li>Last Name: {{ member.lastName }}</li>
-        <li>Status: {{ member.active ? 'active' : 'passive' }}</li>
-      </ul>
-    </section>
+    <MemberEditForm :first-name="member.firstName"
+                    :last-name="member.lastName"
+                    :active="member.active"
+                    @member-edit="editMember" />
   </MdcCard>
 </template>
 
@@ -15,12 +11,13 @@
 import { computed, defineComponent } from 'vue';
 import { useStore } from 'vuex';
 import { useRoute } from 'vue-router';
-import { MdcCard } from '../../components';
+import { MdcCard, MemberEditForm } from '../../components';
 import { Member } from '../../types';
 
 export default defineComponent({
   components: {
-    MdcCard
+    MdcCard,
+    MemberEditForm
   },
   setup() {
     const route = useRoute();
@@ -30,13 +27,14 @@ export default defineComponent({
       return members.find(m => m.id === route.params.memberId) as Member;
     });
 
+    const editMember = (editedMember: { firstName: string; lastName: string; active: boolean }) => {
+      console.info(editedMember);
+    };
+
     return {
-      member
+      member,
+      editMember
     };
   }
 });
 </script>
-
-<style lang="scss" scoped>
-@use "../../assets/style/presence-container";
-</style>
