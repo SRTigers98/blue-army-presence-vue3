@@ -10,6 +10,7 @@ export interface SeasonGame {
   opponent: string;
   home: boolean;
   mode: string;
+  date: Date;
   presentMembers: string[];
 }
 
