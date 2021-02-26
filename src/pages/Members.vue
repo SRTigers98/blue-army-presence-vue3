@@ -9,7 +9,7 @@
         <MdcButton mode="danger" @click="deleteMember(member)">
           <MdcIcon icon-name="delete" />
         </MdcButton>
-        <MdcButton>Edit</MdcButton>
+        <MdcButton :link="{name: 'member:edit', params: {memberId: member.id}}">Edit</MdcButton>
       </menu>
     </MdcCard>
   </section>
