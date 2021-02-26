@@ -11,7 +11,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import EditFormContainer from './EditFormContainer.vue';
+import { EditFormContainer } from './util';
 import { MdcSwitch, MdcTextField } from '../material';
 
 export default defineComponent({

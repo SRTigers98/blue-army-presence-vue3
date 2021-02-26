@@ -11,7 +11,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { useRouter } from 'vue-router';
-import { MdcButton } from '../material';
+import { MdcButton } from '../../material';
 
 export default defineComponent({
   components: {
@@ -36,6 +36,6 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-@use "../../assets/style/presence-container";
-@use "../../assets/style/presence-form";
+@use "../../../assets/style/presence-container";
+@use "../../../assets/style/presence-form";
 </style>
