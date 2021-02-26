@@ -18,17 +18,11 @@
         <span class="mdc-line-ripple"></span>
       </label>
     </section>
-    <section class="presence-form__item presence-form__switch">
-      <div class="mdc-switch" ref="activeSwitch">
-        <div class="mdc-switch__track"></div>
-        <div class="mdc-switch__thumb-underlay">
-          <div class="mdc-switch__thumb"></div>
-          <input v-model="memberActive" type="checkbox" id="member-active"
-                 class="mdc-switch__native-control" role="switch">
-        </div>
-      </div>
-      <label v-if="memberActive" for="member-active">Active</label>
-      <label v-else for="member-active">Passive</label>
+    <section class="presence-form__item">
+      <MdcSwitch v-model="memberActive">
+        <span v-if="memberActive">Active</span>
+        <span v-else>Passive</span>
+      </MdcSwitch>
     </section>
   </EditFormContainer>
 </template>
@@ -36,11 +30,12 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 import { MDCTextField } from '@material/textfield/component';
-import { MDCSwitch } from '@material/switch/component';
 import EditFormContainer from './EditFormContainer.vue';
+import { MdcSwitch } from '../material';
 
 export default defineComponent({
   components: {
+    MdcSwitch,
     EditFormContainer
   },
   props: {
@@ -77,7 +72,6 @@ export default defineComponent({
   mounted() {
     new MDCTextField(this.$refs.firstNameTextField as Element);
     new MDCTextField(this.$refs.lastNameTextField as Element);
-    new MDCSwitch(this.$refs.activeSwitch as Element);
   }
 });
 </script>

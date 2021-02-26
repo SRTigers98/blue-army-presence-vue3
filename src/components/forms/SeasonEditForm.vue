@@ -9,16 +9,8 @@
         <span class="mdc-line-ripple"></span>
       </label>
     </section>
-    <section class="presence-form__item presence-form__switch">
-      <div class="mdc-switch" ref="isCurrentSeasonSwitch">
-        <div class="mdc-switch__track"></div>
-        <div class="mdc-switch__thumb-underlay">
-          <div class="mdc-switch__thumb"></div>
-          <input v-model="isCurrentSeason" type="checkbox" id="current-season"
-                 class="mdc-switch__native-control" role="switch">
-        </div>
-      </div>
-      <label for="current-season">Is Current Season</label>
+    <section class="presence-form__item">
+      <MdcSwitch v-model="isCurrentSeason">Is Current Season</MdcSwitch>
     </section>
   </EditFormContainer>
 </template>
@@ -26,12 +18,13 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 import { MDCTextField } from '@material/textfield/component';
-import { MDCSwitch } from '@material/switch/component';
 import EditFormContainer from './EditFormContainer.vue';
+import { MdcSwitch } from '../material';
 
 export default defineComponent({
   components: {
-    EditFormContainer
+    EditFormContainer,
+    MdcSwitch
   },
   props: {
     name: {
@@ -60,7 +53,6 @@ export default defineComponent({
   },
   mounted() {
     new MDCTextField(this.$refs.seasonNameTextField as Element);
-    new MDCSwitch(this.$refs.isCurrentSeasonSwitch as Element);
   }
 });
 </script>
