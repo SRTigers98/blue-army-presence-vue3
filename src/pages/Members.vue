@@ -12,20 +12,22 @@
         <MdcButton :link="{name: 'member:edit', params: {memberId: member.id}}">Edit</MdcButton>
       </menu>
     </MdcCard>
+    <MdcFAB icon-name="add" label="New Member" :link="{name: 'member:new'}" />
   </section>
 </template>
 
 <script lang="ts">
 import { computed, defineComponent } from 'vue';
 import { useStore } from 'vuex';
-import { MdcButton, MdcCard, MdcIcon } from '../components';
+import { MdcButton, MdcCard, MdcFAB, MdcIcon } from '../components';
 import { Member } from '../types';
 
 export default defineComponent({
   components: {
     MdcButton,
     MdcCard,
-    MdcIcon
+    MdcIcon,
+    MdcFAB
   },
   setup() {
     const store = useStore();
