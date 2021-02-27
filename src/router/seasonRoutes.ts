@@ -1,5 +1,5 @@
 import { RouteRecordRaw } from 'vue-router';
-import { SeasonEdit, SeasonGames, Seasons } from '../pages';
+import { SeasonEdit, SeasonGameEdit, SeasonGames, Seasons } from '../pages';
 
 export default [
   {
@@ -37,5 +37,13 @@ export default [
   {
     path: '/seasons/:seasonId',
     redirect: { name: 'season:games' }
+  },
+  {
+    name: 'season:game:edit',
+    path: '/seasons/:seasonId/games/:gameId',
+    component: SeasonGameEdit,
+    meta: {
+      tabName: 'seasons'
+    }
   }
 ] as RouteRecordRaw[];

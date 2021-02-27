@@ -11,7 +11,7 @@
         <MdcButton mode="danger">
           <MdcIcon icon-name="delete" />
         </MdcButton>
-        <MdcButton>Edit</MdcButton>
+        <MdcButton :link="getEditLink(game.id)">Edit</MdcButton>
       </menu>
     </MdcCard>
   </section>
@@ -20,7 +20,7 @@
 <script lang="ts">
 import { computed, defineComponent } from 'vue';
 import { useStore } from 'vuex';
-import { useRoute } from 'vue-router';
+import { LocationAsRelativeRaw, useRoute } from 'vue-router';
 import { MdcButton, MdcCard, MdcIcon } from '../../components';
 import { Season, SeasonGame } from '../../types';
 
@@ -49,9 +49,18 @@ export default defineComponent({
       }
     };
 
+    const getEditLink = (gameId: string): LocationAsRelativeRaw => ({
+      name: 'season:game:edit',
+      params: {
+        seasonId: route.params.seasonId,
+        gameId
+      }
+    });
+
     return {
       seasonGames,
-      getGameModeIcon
+      getGameModeIcon,
+      getEditLink
     };
   }
 });
