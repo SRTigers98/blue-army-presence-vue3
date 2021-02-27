@@ -12,7 +12,7 @@ export default [
   },
   {
     name: 'season:edit',
-    path: '/seasons/:seasonId/edit',
+    path: '/seasons/:seasonId',
     component: SeasonEdit,
     meta: {
       tabName: 'seasons'
@@ -33,10 +33,6 @@ export default [
     meta: {
       tabName: 'seasons'
     }
-  },
-  {
-    path: '/seasons/:seasonId',
-    redirect: { name: 'season:games' }
   },
   {
     name: 'season:game:edit',
