@@ -32,3 +32,8 @@ export interface CreateSeasonPayload {
   name: string;
   isCurrentSeason: boolean;
 }
+
+export interface DeleteSeasonGamePayload {
+  gameId: string;
+  seasonId: string;
+}
