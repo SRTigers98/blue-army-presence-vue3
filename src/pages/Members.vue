@@ -1,7 +1,7 @@
 <template>
   <section class="presence-container--flex">
     <MemberCard v-for="member in members" :key="member.id"
-                :member="member" @delete-member="deleteMember(member)" />
+                :member="member" @delete-member="deleteMember" />
     <MdcFAB icon-name="add" label="New Member" :link="{name: 'member:new'}" />
   </section>
 </template>
