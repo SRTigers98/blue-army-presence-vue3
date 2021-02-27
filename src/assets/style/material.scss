@@ -41,6 +41,9 @@
 // Material Switch
 @use "~@material/switch";
 
+// Material Radio
+@use "~@material/radio/styles";
+
 // Include Styles
 @include card.core-styles;
 @include button.core-styles;
