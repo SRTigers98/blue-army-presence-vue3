@@ -36,7 +36,6 @@ export default defineComponent({
     const dateValue = ref<string>(parseDate(props.modelValue));
 
     watch(dateValue, (newVal: string) => {
-      console.info(newVal);
       const newDate = new Date(newVal);
       context.emit('update:modelValue', newDate);
     });
