@@ -7,8 +7,8 @@
     </section>
     <hr>
     <menu class="presence-games__card-menu">
-      <MdcButton mode="danger">
-        <MdcIcon icon-name="delete" @click="onDelete" />
+      <MdcButton mode="danger" @click="onDelete">
+        <MdcIcon icon-name="delete" />
       </MdcButton>
       <MdcButton :link="editLink">Edit</MdcButton>
     </menu>
