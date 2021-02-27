@@ -8,3 +8,4 @@ export { default as MdcTextField } from './MdcTextField.vue';
 export { default as MdcDateField } from './MdcDateField.vue';
 export { default as MdcRadio } from './MdcRadio.vue';
 export { default as MdcRadioGroup } from './MdcRadioGroup.vue';
+export { default as MdcCheckbox } from './MdcCheckbox.vue';

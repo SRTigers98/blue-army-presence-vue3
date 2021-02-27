@@ -44,9 +44,13 @@
 // Material Radio
 @use "~@material/radio/styles";
 
+// Material Checkbox
+@use "~@material/checkbox";
+
 // Include Styles
 @include card.core-styles;
 @include button.core-styles;
 @include fab.core-styles;
 @include textfield.core-styles;
 @include switch.core-styles;
+@include checkbox.core-styles;
