@@ -38,10 +38,8 @@ export default defineComponent({
     }
   },
   setup(props, context) {
-    const game = props.seasonGame as SeasonGame;
-
     const gameModeIcon = computed<string>(() => {
-      switch (game.mode) {
+      switch (props.seasonGame.mode) {
         case 'regular':
           return 'event';
         case 'playoffs':
@@ -50,16 +48,15 @@ export default defineComponent({
           return 'error';
       }
     });
-
     const editLink = computed<LocationAsRelativeRaw>(() => ({
       name: 'season:game:edit',
       params: {
         seasonId: props.seasonId,
-        gameId: game.id
+        gameId: props.seasonGame.id
       }
     }));
 
-    const onDelete = () => context.emit('delete-game', game);
+    const onDelete = () => context.emit('delete-game', props.seasonGame);
 
     return {
       gameModeIcon,
