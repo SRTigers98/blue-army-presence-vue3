@@ -41,5 +41,13 @@ export default [
     meta: {
       tabName: 'seasons'
     }
+  },
+  {
+    name: 'season:game:new',
+    path: '/seasons/:seasonId/games/new',
+    component: SeasonGameEdit,
+    meta: {
+      tabName: 'seasons'
+    }
   }
 ] as RouteRecordRaw[];
