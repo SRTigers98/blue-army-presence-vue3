@@ -37,3 +37,8 @@ export interface DeleteSeasonGamePayload {
   gameId: string;
   seasonId: string;
 }
+
+export interface SaveSeasonGamePayload {
+  seasonId: string;
+  game: SeasonGame;
+}
