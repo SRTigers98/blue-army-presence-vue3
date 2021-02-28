@@ -10,7 +10,7 @@ import { computed, defineComponent } from 'vue';
 import { useStore } from 'vuex';
 import { useRoute, useRouter } from 'vue-router';
 import { MdcCard, SeasonGameEditForm } from '../../../components';
-import { Member, Season, SeasonGame } from '../../../types';
+import { Member, SaveSeasonGamePayload, Season, SeasonGame } from '../../../types';
 
 export default defineComponent({
   components: {
@@ -30,7 +30,15 @@ export default defineComponent({
     const activeMembers = computed(() => store.getters['member/activeMembers'] as Member[]);
 
     const editGame = (editedGame: SeasonGame) => {
-      console.info(editedGame);
+      const gameId = route.params.gameId as string;
+      const payload: SaveSeasonGamePayload = {
+        seasonId: route.params.seasonId as string,
+        game: {
+          ...editedGame,
+          id: gameId !== 'new' ? gameId : ''
+        }
+      };
+      store.dispatch('season/saveGame', payload);
       router.replace({ name: 'season:games', params: { seasonId: route.params.seasonId } });
     };
 
