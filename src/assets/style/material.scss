@@ -44,8 +44,8 @@
 // Material Radio
 @use "~@material/radio/styles";
 
-// Material Checkbox
-@use "~@material/checkbox";
+// Material Chips
+@use "~@material/chips/mdc-chips";
 
 // Include Styles
 @include card.core-styles;
@@ -53,4 +53,3 @@
 @include fab.core-styles;
 @include textfield.core-styles;
 @include switch.core-styles;
-@include checkbox.core-styles;
