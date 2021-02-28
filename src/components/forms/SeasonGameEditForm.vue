@@ -35,8 +35,7 @@ export default defineComponent({
   },
   props: {
     gameData: {
-      type: Object as PropType<SeasonGame>,
-      required: true
+      type: Object as PropType<SeasonGame>
     },
     activeMembers: {
       type: Array as PropType<Member[]>,

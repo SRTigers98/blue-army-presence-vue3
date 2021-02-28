@@ -30,12 +30,11 @@ export default defineComponent({
     const activeMembers = computed(() => store.getters['member/activeMembers'] as Member[]);
 
     const editGame = (editedGame: SeasonGame) => {
-      const gameId = route.params.gameId as string;
       const payload: SaveSeasonGamePayload = {
         seasonId: route.params.seasonId as string,
         game: {
           ...editedGame,
-          id: gameId !== 'new' ? gameId : ''
+          id: (route.params.gameId || '') as string
         }
       };
       store.dispatch('season/saveGame', payload);

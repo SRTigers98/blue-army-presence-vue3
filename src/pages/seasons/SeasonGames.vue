@@ -1,5 +1,6 @@
 <template>
   <section class="presence-container--flex">
+    <MdcFAB icon-name="add" label="New Game" :link="newGameLink" />
     <SeasonGameCard v-for="game in seasonGames" :key="game.id"
                     :season-game="game" :season-id="seasonId" @delete-game="deleteGame" />
   </section>
@@ -8,13 +9,14 @@
 <script lang="ts">
 import { computed, defineComponent } from 'vue';
 import { useStore } from 'vuex';
-import { useRoute } from 'vue-router';
-import { SeasonGameCard } from '../../components';
+import { LocationAsRelativeRaw, useRoute } from 'vue-router';
+import { MdcFAB, SeasonGameCard } from '../../components';
 import { DeleteSeasonGamePayload, Season, SeasonGame } from '../../types';
 
 export default defineComponent({
   components: {
-    SeasonGameCard
+    SeasonGameCard,
+    MdcFAB
   },
   setup() {
     const store = useStore();
@@ -27,6 +29,12 @@ export default defineComponent({
     });
     const seasonId = computed<string>(() => route.params.seasonId as string);
 
+    const newGameLink = computed<LocationAsRelativeRaw>(() => ({
+      name: 'season:game:new',
+      params: {
+        seasonId: route.params.seasonId
+      }
+    }));
     const deleteGame = (game: SeasonGame) => {
       if (confirm(`Delete game against ${game.opponent}?`)) {
         const payload: DeleteSeasonGamePayload = { gameId: game.id, seasonId: seasonId.value };
@@ -37,6 +45,7 @@ export default defineComponent({
     return {
       seasonGames,
       seasonId,
+      newGameLink,
       deleteGame
     };
   }
