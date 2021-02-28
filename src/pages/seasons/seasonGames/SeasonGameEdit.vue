@@ -1,6 +1,7 @@
 <template>
   <MdcCard>
-    <SeasonGameEditForm :game-data="game" @game-edit="editGame" />
+    <SeasonGameEditForm :game-data="game" :active-members="activeMembers"
+                        @game-edit="editGame" />
   </MdcCard>
 </template>
 
@@ -9,7 +10,7 @@ import { computed, defineComponent } from 'vue';
 import { useStore } from 'vuex';
 import { useRoute, useRouter } from 'vue-router';
 import { MdcCard, SeasonGameEditForm } from '../../../components';
-import { Season, SeasonGame } from '../../../types';
+import { Member, Season, SeasonGame } from '../../../types';
 
 export default defineComponent({
   components: {
@@ -26,6 +27,7 @@ export default defineComponent({
       const season = seasons.find(s => s.id === route.params.seasonId);
       return season?.games.find(g => g.id === route.params.gameId);
     });
+    const activeMembers = computed(() => store.getters['member/activeMembers'] as Member[]);
 
     const editGame = (editedGame: SeasonGame) => {
       console.info(editedGame);
@@ -34,6 +36,7 @@ export default defineComponent({
 
     return {
       game,
+      activeMembers,
       editGame
     };
   }

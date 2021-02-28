@@ -12,17 +12,21 @@
     <section class="presence-form__item">
       <MdcRadioGroup v-model="mode" :values="['regular', 'playoffs']" />
     </section>
+    <section class="presence-form__item">
+      <PresentMembers v-model="presentMembers" :available-members="activeMembers" />
+    </section>
   </EditFormContainer>
 </template>
 
 <script lang="ts">
 import { defineComponent, PropType, ref } from 'vue';
-import { EditFormContainer } from './util';
+import { EditFormContainer, PresentMembers } from './util';
 import { MdcDateField, MdcRadioGroup, MdcSwitch, MdcTextField } from '../material';
-import { SeasonGame } from '../../types';
+import { Member, SeasonGame } from '../../types';
 
 export default defineComponent({
   components: {
+    PresentMembers,
     EditFormContainer,
     MdcTextField,
     MdcSwitch,
@@ -33,6 +37,10 @@ export default defineComponent({
     gameData: {
       type: Object as PropType<SeasonGame>,
       required: true
+    },
+    activeMembers: {
+      type: Array as PropType<Member[]>,
+      required: true
     }
   },
   setup(props, context) {
@@ -40,12 +48,14 @@ export default defineComponent({
     const home = ref<boolean>(props.gameData ? props.gameData.home : true);
     const date = ref<Date>(props.gameData?.date || new Date());
     const mode = ref<'regular' | 'playoffs'>(props.gameData?.mode || 'regular');
+    const presentMembers = ref<string[]>(props.gameData?.presentMembers || []);
 
     const submitForm = () => context.emit('game-edit', {
       opponent: opponent.value,
       home: home.value,
       date: date.value,
-      mode: mode.value
+      mode: mode.value,
+      presentMembers: presentMembers.value
     } as SeasonGame);
 
     return {
@@ -53,6 +63,7 @@ export default defineComponent({
       home,
       date,
       mode,
+      presentMembers,
       submitForm
     };
   }
