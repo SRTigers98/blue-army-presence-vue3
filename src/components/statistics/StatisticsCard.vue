@@ -1,16 +1,27 @@
 <template>
   <MdcCard class="presence-statistics__card">
-    <h1>Statistics</h1>
+    <h2>{{ season.name }}</h2>
   </MdcCard>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, PropType } from 'vue';
 import { MdcCard } from '../material';
+import { Member, Season } from '../../types';
 
 export default defineComponent({
   components: {
     MdcCard
+  },
+  props: {
+    season: {
+      type: Object as PropType<Season>,
+      required: true
+    },
+    members: {
+      type: Array as PropType<Member[]>,
+      required: true
+    }
   }
 });
 </script>
