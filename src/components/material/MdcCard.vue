@@ -1,6 +1,6 @@
 <template>
   <section class="mdc-card presence-card">
-    <div class="mdc-card__content">
+    <div class="mdc-card__content presence-card__content">
       <slot></slot>
     </div>
   </section>
@@ -20,5 +20,10 @@ $spacing: 0.5rem;
   margin: $spacing;
   padding: $spacing;
   overflow-y: auto;
+}
+
+.presence-card__content {
+  height: 100%;
+  width: 100%;
 }
 </style>
