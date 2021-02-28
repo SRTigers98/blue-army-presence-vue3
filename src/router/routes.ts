@@ -1,5 +1,5 @@
 import { RouteRecordRaw } from 'vue-router';
-import { Home, NotFound } from '../pages';
+import { Home, NotFound, Statistics } from '../pages';
 import seasonRoutes from './seasonRoutes';
 import memberRoutes from './memberRoutes';
 
@@ -14,6 +14,14 @@ export default [
   },
   ...seasonRoutes,
   ...memberRoutes,
+  {
+    name: 'statistics',
+    path: '/statistics',
+    component: Statistics,
+    meta: {
+      tabName: 'statistics'
+    }
+  },
   {
     name: '404',
     path: '/:notFound(.*)',

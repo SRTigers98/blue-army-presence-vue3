@@ -7,6 +7,7 @@
             <TabButton path-name="home" icon-name="home" tab-name="home" />
             <TabButton path-name="seasons" icon-name="sports_hockey" tab-name="seasons" />
             <TabButton path-name="members" icon-name="group" tab-name="members" />
+            <TabButton path-name="statistics" icon-name="bar_chart" tab-name="statistics" />
           </div>
         </div>
       </div>
