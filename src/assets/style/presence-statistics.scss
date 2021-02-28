@@ -1,0 +1,19 @@
+@use "presence-color";
+
+.presence-statistics--home,
+.presence-statistics--away,
+.presence-statistics--total {
+  font-weight: bold;
+}
+
+.presence-statistics--home {
+  color: presence-color.$primary;
+}
+
+.presence-statistics--away {
+  color: presence-color.$secondary;
+}
+
+.presence-statistics--total {
+  font-style: italic;
+}
