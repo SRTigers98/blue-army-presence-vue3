@@ -20,6 +20,7 @@ export default async function (context: ActionContext<MemberModule, MemberModule
     context.commit('members', members);
   }
 
-  await memberRef.once('value', memberHandler);
+  memberRef.get()
+    .then(memberHandler);
   memberRef.on('value', memberHandler);
 }
