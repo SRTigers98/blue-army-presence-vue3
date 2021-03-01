@@ -1,0 +1,40 @@
+name: Deploy
+
+on:
+  release:
+    types:
+      - published
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2.1.4
+        with:
+          node-version: 14.x
+      - name: Add Firebase Config
+        uses: finnp/create-file-action@1.0.0
+        env:
+          FILE_NAME: 'src/firebase/firebaseConfig.ts'
+          FILE_DATA: '${{ secrets.FIREBASE_CONFIG }}'
+      - name: Install
+        run: npm install
+      - name: Lint
+        run: npm run lint
+      - name: Build
+        run: npm run build
+      - name: Upload Build Files
+        uses: actions/upload-artifact@v2.2.2
+        with:
+          name: blue-army-presence
+          path: dist/**
+      - name: Deploy To Firebase
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_BLUE_ARMY_PRESENCE }}'
+          projectId: blue-army-presence
+          channelId: live
