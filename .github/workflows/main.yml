@@ -32,3 +32,11 @@ jobs:
         with:
           name: blue-army-presence
           path: dist/**
+      - name: Deploy To Firebase
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_BLUE_ARMY_PRESENCE }}'
+          projectId: blue-army-presence
+          channelId: vue3
+          expires: 14d
