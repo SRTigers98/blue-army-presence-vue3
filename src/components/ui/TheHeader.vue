@@ -5,7 +5,7 @@
         <TheHeaderLogo />
         <span class="mdc-top-app-bar__title">Blue Army Presence</span>
       </section>
-      <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
+      <section v-if="!isLoginPage" class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
         <MdcIcon icon-name="logout" class="presence-header__logout" @click="logout" />
       </section>
     </div>
@@ -13,8 +13,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import { useRouter } from 'vue-router';
+import { computed, defineComponent } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 import { useFirebase } from '../../firebase';
 import TheHeaderLogo from './TheHeaderLogo.vue';
 import { MdcIcon } from '../material';
@@ -25,15 +25,18 @@ export default defineComponent({
     MdcIcon
   },
   setup() {
+    const route = useRoute();
     const router = useRouter();
     const firebase = useFirebase();
 
+    const isLoginPage = computed(() => route.name === 'login');
     const logout = () => {
       firebase.auth().signOut()
           .then(() => router.replace({ name: 'login' }));
     };
 
     return {
+      isLoginPage,
       logout
     };
   }
