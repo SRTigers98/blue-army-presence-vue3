@@ -21,15 +21,10 @@ export interface SeasonModule {
 }
 
 // Store Action Types
-export interface UpdateSeasonPayload {
-  id: string;
+export interface SaveSeasonPayload {
+  id?: string;
   name: string;
-  created: Date;
-  isCurrentSeason: boolean;
-}
-
-export interface CreateSeasonPayload {
-  name: string;
+  created?: Date;
   isCurrentSeason: boolean;
 }
 

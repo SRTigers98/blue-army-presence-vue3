@@ -1,17 +1,10 @@
 import { ActionTree } from 'vuex';
-import {
-  CreateSeasonPayload,
-  DeleteSeasonGamePayload,
-  SaveSeasonGamePayload,
-  SeasonModule,
-  UpdateSeasonPayload
-} from '../../types';
+import { DeleteSeasonGamePayload, SaveSeasonGamePayload, SaveSeasonPayload, SeasonModule } from '../../types';
 import * as actions from './actions/index';
 
 export default {
   initSeasons: (context) => actions.initSeasons(context),
-  updateSeason: (context, payload: UpdateSeasonPayload) => actions.setSeason(context, payload),
-  createSeason: (context, payload: CreateSeasonPayload) => actions.setSeason(context, payload),
+  saveSeason: (context, payload: SaveSeasonPayload) => actions.saveSeason(context, payload),
   deleteSeason: (context, payload: string) => actions.deleteSeason(context, payload),
   saveGame: (context, payload: SaveSeasonGamePayload) => actions.saveGame(context, payload),
   deleteGame: (context, payload: DeleteSeasonGamePayload) => actions.deleteGame(context, payload)

@@ -1,8 +1,7 @@
 import { ActionContext } from 'vuex';
-import { Season, SeasonModule } from '../../../types';
+import { SaveSeasonPayload, Season, SeasonModule } from '../../../types';
 
-export default function (context: ActionContext<SeasonModule, SeasonModule>,
-                         payload: { id?: string; name: string; created?: Date; isCurrentSeason: boolean }) {
+export default function (context: ActionContext<SeasonModule, SeasonModule>, payload: SaveSeasonPayload) {
   const seasons = [...context.getters.seasons as Season[]];
 
   const seasonIndex = payload.id ? seasons.findIndex(s => s.id === payload.id) : -1;

@@ -11,7 +11,7 @@ import { computed, defineComponent, ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useStore } from 'vuex';
 import { MdcCard, SeasonEditForm } from '../../components';
-import { CreateSeasonPayload, Season, UpdateSeasonPayload } from '../../types';
+import { SaveSeasonPayload, Season } from '../../types';
 
 export default defineComponent({
   components: {
@@ -35,21 +35,13 @@ export default defineComponent({
     });
 
     const editSeason = (seasonData: { seasonName: string; isCurrentSeason: boolean }) => {
-      if (season.value) {
-        const editedSeason: UpdateSeasonPayload = {
-          id: season.value.id,
-          name: seasonData.seasonName,
-          created: season.value.created,
-          isCurrentSeason: seasonData.isCurrentSeason
-        };
-        store.dispatch('season/updateSeason', editedSeason);
-      } else {
-        const createdSeason: CreateSeasonPayload = {
-          name: seasonData.seasonName,
-          isCurrentSeason: seasonData.isCurrentSeason
-        };
-        store.dispatch('season/createSeason', createdSeason);
-      }
+      const updateData: SaveSeasonPayload = {
+        id: season.value?.id,
+        name: seasonData.seasonName,
+        created: season.value?.created,
+        isCurrentSeason: seasonData.isCurrentSeason
+      };
+      store.dispatch('season/saveSeason', updateData);
       router.replace({ name: 'seasons' })
     };
 
