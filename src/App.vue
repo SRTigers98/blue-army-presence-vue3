@@ -7,17 +7,28 @@
       </transition>
     </router-view>
   </main>
-  <TheFooter />
+  <TheFooter v-if="isAuthenticated" />
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue';
+import { useFirebase } from './firebase';
 import { TheFooter, TheHeader } from './components';
 
 export default defineComponent({
   components: {
     TheHeader,
     TheFooter
+  },
+  setup() {
+    const firebase = useFirebase();
+
+    const isAuthenticated = ref<boolean>(!!firebase.auth().currentUser);
+    firebase.auth().onAuthStateChanged(user => isAuthenticated.value = !!user);
+
+    return {
+      isAuthenticated
+    };
   }
 });
 </script>
