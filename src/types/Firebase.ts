@@ -3,3 +3,16 @@ export interface MemberDto {
   lastName: string;
   active: boolean;
 }
+
+export interface SeasonDto {
+  name: string;
+  created: string;
+}
+
+export interface SeasonGameDto {
+  opponent: string;
+  home: boolean;
+  mode: 'regular' | 'playoffs';
+  date: string;
+  presentMembers: string;
+}

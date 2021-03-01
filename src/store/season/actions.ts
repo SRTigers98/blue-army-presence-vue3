@@ -9,6 +9,7 @@ import {
 import * as actions from './actions/index';
 
 export default {
+  initSeasons: (context) => actions.initSeasons(context),
   updateSeason: (context, payload: UpdateSeasonPayload) => actions.setSeason(context, payload),
   createSeason: (context, payload: CreateSeasonPayload) => actions.setSeason(context, payload),
   deleteSeason: (context, payload: string) => actions.deleteSeason(context, payload),
