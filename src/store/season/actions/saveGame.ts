@@ -1,22 +1,21 @@
 import { ActionContext } from 'vuex';
-import { SaveSeasonGamePayload, Season, SeasonGame, SeasonModule } from '../../../types';
+import { useFirebase } from '../../../firebase';
+import { SaveSeasonGamePayload, SeasonGameDto, SeasonModule } from '../../../types';
 
-export default function (context: ActionContext<SeasonModule, SeasonModule>, payload: SaveSeasonGamePayload) {
-  const seasons = [...context.getters.seasons as Season[]];
-  const seasonIdx = seasons.findIndex(s => s.id === payload.seasonId);
-  if (~seasonIdx) {
-    const seasonGames = [...seasons[seasonIdx].games];
-    const gameIdx = payload.game.id.length > 0 ? seasonGames.findIndex(g => g.id === payload.game.id) : -1;
-    if (~gameIdx) {
-      seasonGames[gameIdx] = payload.game;
-    } else {
-      const newGame: SeasonGame = {
-        ...payload.game,
-        id: (Math.random() * 10000).toFixed(0)
-      };
-      seasonGames.push(newGame);
-    }
-    seasons[seasonIdx].games = seasonGames;
-    context.commit('seasons', seasons);
+export default async function (context: ActionContext<SeasonModule, SeasonModule>, payload: SaveSeasonGamePayload) {
+  const firebaseInstance = useFirebase();
+
+  const gameRef = payload.game.id.length > 0 ?
+    firebaseInstance.database().ref(`season/${payload.seasonId}/games/${payload.game.id}`) :
+    firebaseInstance.database().ref(`season/${payload.seasonId}/games`).push();
+
+  const gameDto: SeasonGameDto = {
+    opponent: payload.game.opponent,
+    home: payload.game.home,
+    mode: payload.game.mode,
+    date: payload.game.date.toISOString(),
+    presentMembers: JSON.stringify(payload.game.presentMembers)
   }
+
+  await gameRef.set(gameDto);
 }
