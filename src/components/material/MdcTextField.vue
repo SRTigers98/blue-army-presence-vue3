@@ -4,7 +4,8 @@
     <span class="mdc-floating-label" id="material-text">
       {{ label }}
     </span>
-    <input v-model.trim="textValue" class="mdc-text-field__input" type="text" aria-labelledby="material-text"
+    <input v-model.trim="textValue" class="mdc-text-field__input"
+           :type="password ? 'password' : 'text'" aria-labelledby="material-text"
            :required="required">
     <span class="mdc-line-ripple"></span>
   </label>
@@ -25,6 +26,10 @@ export default defineComponent({
       required: true
     },
     required: {
+      type: Boolean,
+      default: false
+    },
+    password: {
       type: Boolean,
       default: false
     }
