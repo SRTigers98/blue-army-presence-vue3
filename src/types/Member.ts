@@ -11,10 +11,9 @@ export interface MemberModule {
 }
 
 // Store Action Types
-export interface CreateMemberPayload {
+export interface SaveMemberPayload {
+  id?: string;
   firstName: string;
   lastName: string;
   active: boolean;
 }
-
-export type UpdateMemberPayload = Member;

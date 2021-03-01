@@ -12,7 +12,7 @@ import { computed, defineComponent } from 'vue';
 import { useStore } from 'vuex';
 import { useRoute, useRouter } from 'vue-router';
 import { MdcCard, MemberEditForm } from '../../components';
-import { Member, UpdateMemberPayload } from '../../types';
+import { Member, SaveMemberPayload } from '../../types';
 
 export default defineComponent({
   components: {
@@ -30,15 +30,11 @@ export default defineComponent({
     });
 
     const editMember = (editedMember: { firstName: string; lastName: string; active: boolean }) => {
-      if (route.params.memberId) {
-        const updateData: UpdateMemberPayload = {
-          id: route.params.memberId as string,
-          ...editedMember
-        };
-        store.dispatch('member/updateMember', updateData);
-      } else {
-        store.dispatch('member/createMember', editedMember);
+      const updateData: SaveMemberPayload = {
+        id: route.params.memberId as (string | undefined),
+        ...editedMember
       }
+      store.dispatch('member/saveMember', updateData);
       router.replace({ name: 'members' });
     };
 

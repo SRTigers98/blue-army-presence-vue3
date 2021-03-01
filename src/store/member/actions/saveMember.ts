@@ -1,8 +1,7 @@
 import { ActionContext } from 'vuex';
-import { Member, MemberModule } from '../../../types';
+import { Member, MemberModule, SaveMemberPayload } from '../../../types';
 
-export default function (context: ActionContext<MemberModule, MemberModule>,
-                         member: { id?: string; firstName: string; lastName: string; active: boolean }) {
+export default function (context: ActionContext<MemberModule, MemberModule>, member: SaveMemberPayload) {
   const members = [...context.getters.members as Member[]];
 
   const memberIndex = member.id ? members.findIndex(m => m.id === member.id) : -1;
