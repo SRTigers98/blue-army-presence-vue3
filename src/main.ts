@@ -9,7 +9,15 @@ const app = createApp(App);
 app.use(store);
 app.use(router);
 
-useFirebase();
+const firebase = useFirebase();
 
+let appInitialized = false;
 router.isReady()
-  .then(() => app.mount('#app'));
+  .then(() => {
+    firebase.auth().onAuthStateChanged(() => {
+      if (!appInitialized) {
+        appInitialized = true;
+        app.mount('#app');
+      }
+    })
+  });
