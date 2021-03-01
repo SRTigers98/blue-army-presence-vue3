@@ -16,6 +16,11 @@ jobs:
         uses: actions/setup-node@v2.1.4
         with:
           node-version: 14.x
+      - name: Add Firebase Config
+        uses: finnp/create-file-action@1.0.0
+        env:
+          FILE_NAME: 'src/firebase/firebaseConfig.ts'
+          FILE_DATA: '${{ secrets.FIREBASE_CONFIG }}'
       - name: Install
         run: npm install
       - name: Lint
