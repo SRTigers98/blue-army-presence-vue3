@@ -3,7 +3,7 @@ import { MemberModule, SeasonModule } from '../types';
 import { season } from './season';
 import { member } from './member';
 
-type PresenceStore = SeasonModule & MemberModule;
+export type PresenceStore = SeasonModule & MemberModule;
 
 export default createStore<PresenceStore>({
   modules: {
