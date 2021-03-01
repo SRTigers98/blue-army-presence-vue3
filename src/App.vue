@@ -12,6 +12,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
+import { useStore } from 'vuex';
 import { useFirebase } from './firebase';
 import { TheFooter, TheHeader } from './components';
 
@@ -21,7 +22,11 @@ export default defineComponent({
     TheFooter
   },
   setup() {
+    const store = useStore();
     const firebase = useFirebase();
+
+    // Initialize Member Store
+    store.dispatch('member/initMembers');
 
     const isAuthenticated = ref<boolean>(!!firebase.auth().currentUser);
     firebase.auth().onAuthStateChanged(user => isAuthenticated.value = !!user);
