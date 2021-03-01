@@ -44,14 +44,17 @@ export default defineComponent({
 
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
+html, body, #app {
+  height: 100%;
+  width: 100%;
+}
+
 body {
   font-family: Roboto, sans-serif;
   margin: 0;
-  height: 100vh;
 }
 
 #app {
-  height: 100%;
   display: flex;
   flex-direction: column;
 }
