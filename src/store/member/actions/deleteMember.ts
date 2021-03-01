@@ -1,8 +1,11 @@
 import { ActionContext } from 'vuex';
-import { Member, MemberModule } from '../../../types';
+import { useFirebase } from '../../../firebase';
+import { MemberModule } from '../../../types';
 
-export default function (context: ActionContext<MemberModule, MemberModule>, memberId: string) {
-  const members = [...context.getters.members as Member[]]
-    .filter(m => m.id !== memberId);
-  context.commit('members', members);
+export default async function (context: ActionContext<MemberModule, MemberModule>, memberId: string) {
+  const firebase = useFirebase();
+
+  await firebase.database()
+    .ref(`member/${memberId}`)
+    .remove();
 }
