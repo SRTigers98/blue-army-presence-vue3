@@ -1,20 +1,19 @@
 import { ActionContext } from 'vuex';
-import { Member, MemberModule, SaveMemberPayload } from '../../../types';
+import { useFirebase } from '../../../firebase';
+import { MemberDto, MemberModule, SaveMemberPayload } from '../../../types';
 
-export default function (context: ActionContext<MemberModule, MemberModule>, member: SaveMemberPayload) {
-  const members = [...context.getters.members as Member[]];
+export default async function (context: ActionContext<MemberModule, MemberModule>, member: SaveMemberPayload) {
+  const firebase = useFirebase();
 
-  const memberIndex = member.id ? members.findIndex(m => m.id === member.id) : -1;
-  const memberData: Member = {
-    ...member,
-    id: member.id || (Math.random() * 10000).toFixed(0)
-  };
-
-  if (~memberIndex) {
-    members[memberIndex] = memberData;
-  } else {
-    members.push(memberData);
+  const memberDto: MemberDto = {
+    firstName: member.firstName,
+    lastName: member.lastName,
+    active: member.active
   }
 
-  context.commit('members', members);
+  const memberRef = member.id ?
+    firebase.database().ref(`member/${member.id}`) :
+    firebase.database().ref('member').push();
+
+  await memberRef.set(memberDto);
 }
