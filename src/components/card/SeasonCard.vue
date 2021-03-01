@@ -29,8 +29,7 @@ export default defineComponent({
       required: true
     },
     currentSeasonId: {
-      type: String,
-      required: true
+      type: String
     }
   },
   setup(props, context) {
