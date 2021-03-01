@@ -1,0 +1,22 @@
+<template>
+  <MdcCard>
+    <section class="presence-container--flex">
+      <h2>Login</h2>
+    </section>
+  </MdcCard>
+</template>
+
+<script lang="ts">
+import { defineComponent } from 'vue';
+import { MdcCard } from '../components';
+
+export default defineComponent({
+  components: {
+    MdcCard
+  }
+});
+</script>
+
+<style lang="scss" scoped>
+@use "../assets/style/presence-container";
+</style>

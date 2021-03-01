@@ -1,5 +1,5 @@
 import { RouteRecordRaw } from 'vue-router';
-import { Home, NotFound, Statistics } from '../pages';
+import { Home, Login, NotFound, Statistics } from '../pages';
 import seasonRoutes from './seasonRoutes';
 import memberRoutes from './memberRoutes';
 
@@ -11,6 +11,11 @@ export default [
     meta: {
       tabName: 'home'
     }
+  },
+  {
+    name: 'login',
+    path: '/login',
+    component: Login
   },
   ...seasonRoutes,
   ...memberRoutes,
