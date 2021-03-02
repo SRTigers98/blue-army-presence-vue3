@@ -3,7 +3,7 @@
     <section class="presence-container--flex">
       <h1>Blue Army Presence</h1>
       <img src="../assets/img/logo.png" alt="Blue Army Logo" class="presence-home__logo">
-      <MdcButton :link="currentSeasonRoute">Current Season</MdcButton>
+      <MdcButton :link="currentSeasonRoute" :disabled="!currentSeasonRoute">Current Season</MdcButton>
     </section>
   </MdcCard>
 </template>
@@ -24,7 +24,9 @@ export default defineComponent({
 
     const currentSeasonRoute = computed(() => {
       const currentSeasonId = store.getters['season/currentSeasonId'] as string;
-      return { name: 'season:games', params: { seasonId: currentSeasonId } } as LocationAsRelativeRaw;
+      return currentSeasonId ?
+          { name: 'season:games', params: { seasonId: currentSeasonId } } as LocationAsRelativeRaw :
+          null;
     });
 
     return {

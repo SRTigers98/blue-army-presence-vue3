@@ -1,11 +1,11 @@
 <template>
-  <router-link v-if="!!link" :to="link" :class="buttonClass">
+  <router-link v-if="!!link && !disabled" :to="link" :class="buttonClass">
     <span class="mdc-button__ripple" />
     <span class="mdc-button__label">
       <slot />
     </span>
   </router-link>
-  <button v-else :class="buttonClass">
+  <button v-else :class="buttonClass" :disabled="disabled">
     <span class="mdc-button__ripple" />
     <span class="mdc-button__label">
       <slot />
@@ -40,6 +40,10 @@ export default defineComponent({
     },
     link: {
       type: Object as PropType<LocationAsRelativeRaw>
+    },
+    disabled: {
+      type: Boolean,
+      default: false
     }
   },
   setup(props) {
