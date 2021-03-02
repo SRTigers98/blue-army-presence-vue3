@@ -1,8 +1,8 @@
 <template>
   <MdcCard class="presence-members__card">
-    <h2>
+    <h2 class="presence-members__card-header">
       <MdcIcon icon-name="person" class="presence-members__card-icon" :class="{'active': member.active}" />
-      {{ member.lastName }}, {{ member.firstName }}
+      <span>{{ member.lastName }}, {{ member.firstName }}</span>
     </h2>
     <menu class="presence-members__card-actions">
       <MdcButton mode="danger" @click="onDelete">
@@ -48,10 +48,17 @@ export default defineComponent({
   max-width: 80%;
 }
 
+.presence-members__card-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 .presence-members__card-icon {
   border-radius: 50%;
   background-color: darkgray;
   padding: 0.5rem;
+  margin-right: 0.5rem;
 }
 
 .presence-members__card-icon.active {
