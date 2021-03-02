@@ -1,27 +1,25 @@
 <template>
-  <table class="presence-statistics__member-statistics">
-    <tr>
-      <th>#</th>
-      <th>Name</th>
-      <th class="presence-statistics--home">Home</th>
-      <th class="presence-statistics--away">Away</th>
-      <th class="presence-statistics--total">Total</th>
-    </tr>
-    <tr v-for="(statistic, i) in sortedStatistics" :key="i">
-      <td>{{ i + 1 }}</td>
-      <td>{{ statistic.member.lastName }}, {{ statistic.member.firstName }}</td>
-      <td class="presence-statistics--home">{{ statistic.homeGames }}</td>
-      <td class="presence-statistics--away">{{ statistic.awayGames }}</td>
-      <td class="presence-statistics--total">{{ statistic.totalGames }}</td>
-    </tr>
-  </table>
+  <section class="presence-statistics__container">
+    <table class="presence-statistics__member-statistics">
+      <StatisticsTableHeader />
+      <tbody>
+      <StatisticsTableRow v-for="(statistic, index) in sortedStatistics" :key="index"
+                          :statistic="statistic" :index="index" />
+      </tbody>
+    </table>
+  </section>
 </template>
 
 <script lang="ts">
 import { computed, defineComponent, PropType } from 'vue';
+import { StatisticsTableHeader, StatisticsTableRow } from './table';
 import { SeasonMemberStatistic } from '../../../types';
 
 export default defineComponent({
+  components: {
+    StatisticsTableHeader,
+    StatisticsTableRow
+  },
   props: {
     statistics: {
       type: Array as PropType<SeasonMemberStatistic[]>,
@@ -43,9 +41,13 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-@use "../../../assets/style/presence-statistics";
+.presence-statistics__container {
+  overflow-x: auto;
+}
 
 .presence-statistics__member-statistics {
   width: 100%;
+  border-spacing: 0;
+  border-collapse: collapse;
 }
 </style>
