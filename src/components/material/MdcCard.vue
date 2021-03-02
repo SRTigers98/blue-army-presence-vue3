@@ -16,6 +16,7 @@ export default defineComponent({});
 $spacing: 0.5rem;
 
 .presence-card {
+  position: relative;
   height: calc(100% - 2 * #{$spacing});
   margin: $spacing;
   padding: $spacing;

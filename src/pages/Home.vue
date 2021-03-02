@@ -5,6 +5,9 @@
       <img src="../assets/img/logo.png" alt="Blue Army Logo" class="presence-home__logo">
       <MdcButton :link="currentSeasonRoute" :disabled="!currentSeasonRoute">Current Season</MdcButton>
     </section>
+    <section class="presence-home__version">
+      <small>{{ appVersion }}</small>
+    </section>
   </MdcCard>
 </template>
 
@@ -22,6 +25,8 @@ export default defineComponent({
   setup() {
     const store = useStore();
 
+    const appVersion = computed(() => `v${store.getters['version']}`);
+
     const currentSeasonRoute = computed(() => {
       const currentSeasonId = store.getters['season/currentSeasonId'] as string;
       return currentSeasonId ?
@@ -30,6 +35,7 @@ export default defineComponent({
     });
 
     return {
+      appVersion,
       currentSeasonRoute
     };
   }
@@ -41,5 +47,11 @@ export default defineComponent({
 
 .presence-home__logo {
   margin-bottom: 1rem;
+}
+
+.presence-home__version {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
 }
 </style>
