@@ -1,8 +1,9 @@
 <template>
   <section class="presence-container--flex">
-    <MdcFAB icon-name="add" label="New Game" :link="newGameLink" />
     <SeasonGameCard v-for="game in seasonGames" :key="game.id"
                     :season-game="game" :season-id="seasonId" @delete-game="deleteGame" />
+    <MdcFAB icon-name="add" :link="newGameLink"
+            class="presence-fab__bottom-right--fixed" />
   </section>
 </template>
 
@@ -54,4 +55,5 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 @use "../../assets/style/presence-container";
+@use "../../assets/style/presence-ui";
 </style>

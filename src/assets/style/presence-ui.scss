@@ -1,0 +1,7 @@
+$footer-height: 4.5rem;
+
+.presence-fab__bottom-right--fixed {
+  position: fixed;
+  bottom: calc(#{$footer-height} + 0.5rem);
+  right: 0.5rem;
+}

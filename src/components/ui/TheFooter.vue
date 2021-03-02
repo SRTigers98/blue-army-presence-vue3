@@ -1,5 +1,5 @@
 <template>
-  <footer>
+  <footer class="presence-footer">
     <div class="mdc-tab-bar" role="tablist">
       <div class="mdc-tab-scroller">
         <div class="mdc-tab-scroller__scroll-area">
@@ -25,3 +25,11 @@ export default defineComponent({
   }
 });
 </script>
+
+<style lang="scss" scoped>
+@use "../../assets/style/presence-ui";
+
+.presence-footer {
+  height: presence-ui.$footer-height;
+}
+</style>

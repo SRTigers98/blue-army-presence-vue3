@@ -2,7 +2,8 @@
   <section class="presence-container--flex">
     <SeasonCard v-for="season in seasons" :key="season.id"
                 :season="season" :current-season-id="currentSeasonId" @delete-season="deleteSeason" />
-    <MdcFAB icon-name="add" label="New Season" :link="{name: 'season:new'}" />
+    <MdcFAB icon-name="add" :link="{name: 'season:new'}"
+            class="presence-fab__bottom-right--fixed" />
   </section>
 </template>
 
@@ -40,4 +41,5 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 @use "../assets/style/presence-container";
+@use "../assets/style/presence-ui";
 </style>

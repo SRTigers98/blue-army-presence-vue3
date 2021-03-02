@@ -2,7 +2,8 @@
   <section class="presence-container--flex">
     <MemberCard v-for="member in members" :key="member.id"
                 :member="member" @delete-member="deleteMember" />
-    <MdcFAB icon-name="add" label="New Member" :link="{name: 'member:new'}" />
+    <MdcFAB icon-name="add" :link="{name: 'member:new'}"
+            class="presence-fab__bottom-right--fixed" />
   </section>
 </template>
 
@@ -38,4 +39,5 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 @use "../assets/style/presence-container";
+@use "../assets/style/presence-ui";
 </style>
