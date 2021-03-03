@@ -2,8 +2,11 @@
   <MdcCard>
     <section class="presence-container--flex">
       <h1>Blue Army Presence</h1>
-      <img src="../assets/img/logo.png" alt="Blue Army Logo" class="presence-home__logo">
-      <MdcButton :link="currentSeasonRoute" :disabled="!currentSeasonRoute">Current Season</MdcButton>
+      <img src="../assets/img/logo.png" alt="Blue Army Logo">
+      <MdcButton :link="currentSeasonRoute" :disabled="!currentSeasonRoute"
+                 class="presence-home__button">
+        Current Season
+      </MdcButton>
     </section>
     <section class="presence-home__version">
       <small>{{ appVersion }}</small>
@@ -45,13 +48,13 @@ export default defineComponent({
 <style lang="scss" scoped>
 @use "../assets/style/presence-container";
 
-.presence-home__logo {
-  margin-bottom: 1rem;
+.presence-home__button {
+  margin: 1rem 0;
 }
 
 .presence-home__version {
   position: absolute;
-  bottom: 0.5rem;
+  top: 0.5rem;
   right: 0.5rem;
 }
 </style>
