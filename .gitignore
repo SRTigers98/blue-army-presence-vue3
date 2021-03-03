@@ -24,3 +24,6 @@ pnpm-debug.log*
 # Firebase Config
 src/firebase/firebaseConfig.ts
 .firebase
+
+# Release archives
+.releases
