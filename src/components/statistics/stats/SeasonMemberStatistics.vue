@@ -1,6 +1,6 @@
 <template>
   <section class="presence-statistics__container">
-    <table class="presence-statistics__member-statistics">
+    <table v-if="sortedStatistics.length > 0" class="presence-statistics__member-statistics">
       <StatisticsTableHeader />
       <tbody>
       <StatisticsTableRow v-for="(statistic, index) in sortedStatistics" :key="index"
