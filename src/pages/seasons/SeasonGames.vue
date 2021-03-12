@@ -3,7 +3,7 @@
     <SeasonGameCard v-for="game in seasonGames" :key="game.id"
                     :season-game="game" :season-id="seasonId"
                     :editable="canEdit" @delete-game="deleteGame" />
-    <MdcFAB icon-name="add" :link="newGameLink"
+    <MdcFAB v-if="canEdit" icon-name="add" :link="newGameLink"
             class="presence-fab__bottom-right--fixed" />
   </section>
 </template>

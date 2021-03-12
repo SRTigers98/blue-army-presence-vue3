@@ -3,7 +3,7 @@
     <SeasonCard v-for="season in seasons" :key="season.id"
                 :season="season" :current-season-id="currentSeasonId"
                 :editable="canEdit" @delete-season="deleteSeason" />
-    <MdcFAB icon-name="add" :link="{name: 'season:new'}"
+    <MdcFAB v-if="canEdit" icon-name="add" :link="{name: 'season:new'}"
             class="presence-fab__bottom-right--fixed" />
   </section>
 </template>
