@@ -14,7 +14,7 @@ export default async function (context: ActionContext<SeasonModule, SeasonModule
     home: payload.game.home,
     mode: payload.game.mode,
     date: payload.game.date.toISOString(),
-    presentMembers: JSON.stringify(payload.game.presentMembers)
+    presentMembers: payload.game.presentMembers
   }
 
   await gameRef.set(gameDto);

@@ -24,7 +24,7 @@ async function initSeasons(context: ActionContext<SeasonModule, SeasonModule>) {
           home: gameDto.home,
           mode: gameDto.mode,
           date: new Date(gameDto.date),
-          presentMembers: JSON.parse(gameDto.presentMembers) as string[]
+          presentMembers: gameDto.presentMembers
         }
         seasonGames.push(seasonGame);
       });

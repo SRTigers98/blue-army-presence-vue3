@@ -14,5 +14,5 @@ export interface SeasonGameDto {
   home: boolean;
   mode: 'regular' | 'playoffs';
   date: string;
-  presentMembers: string;
+  presentMembers: string[];
 }
