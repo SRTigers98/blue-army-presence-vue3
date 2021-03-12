@@ -1,7 +1,8 @@
 <template>
   <section class="presence-container--flex">
     <SeasonGameCard v-for="game in seasonGames" :key="game.id"
-                    :season-game="game" :season-id="seasonId" @delete-game="deleteGame" />
+                    :season-game="game" :season-id="seasonId"
+                    :editable="canEdit" @delete-game="deleteGame" />
     <MdcFAB icon-name="add" :link="newGameLink"
             class="presence-fab__bottom-right--fixed" />
   </section>
@@ -43,11 +44,14 @@ export default defineComponent({
       }
     };
 
+    const canEdit = computed(() => store.getters['auth/isEditor'] as boolean);
+
     return {
       seasonGames,
       seasonId,
       newGameLink,
-      deleteGame
+      deleteGame,
+      canEdit
     };
   }
 });

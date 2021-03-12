@@ -6,7 +6,7 @@
       <span>{{ seasonGame.date.toLocaleDateString() }}</span>
     </section>
     <hr>
-    <menu class="presence-games__card-menu">
+    <menu v-if="editable" class="presence-games__card-menu">
       <MdcButton mode="danger" @click="onDelete">
         <MdcIcon icon-name="delete" />
       </MdcButton>
@@ -35,6 +35,10 @@ export default defineComponent({
     seasonId: {
       type: String,
       required: true
+    },
+    editable: {
+      type: Boolean,
+      default: false
     }
   },
   setup(props, context) {
