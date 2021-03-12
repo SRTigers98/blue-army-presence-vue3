@@ -6,6 +6,8 @@ function initStore(store: Store<PresenceStore>) {
   store.dispatch('member/initMembers');
   // Initialize Seasons and SeasonGames
   store.dispatch('season/initSeasons');
+  // Initialize User Auth Information
+  store.dispatch('auth/initAuth');
 }
 
 export const useInitStore = () => initStore;
