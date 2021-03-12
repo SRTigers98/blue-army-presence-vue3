@@ -3,10 +3,10 @@
     <h2>{{ season.name }}</h2>
     <hr>
     <nav class="presence-seasons__card-actions">
-      <MdcButton mode="danger" @click="onDelete">
+      <MdcButton v-if="editable" mode="danger" @click="onDelete">
         <MdcIcon icon-name="delete" />
       </MdcButton>
-      <MdcButton mode="outlined" :link="editLink">Edit</MdcButton>
+      <MdcButton v-if="editable" mode="outlined" :link="editLink">Edit</MdcButton>
       <MdcButton :link="gamesLink">Open</MdcButton>
     </nav>
   </MdcCard>
@@ -30,6 +30,10 @@ export default defineComponent({
     },
     currentSeasonId: {
       type: String
+    },
+    editable: {
+      type: Boolean,
+      default: false
     }
   },
   setup(props, context) {

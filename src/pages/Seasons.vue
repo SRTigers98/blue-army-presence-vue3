@@ -1,7 +1,8 @@
 <template>
   <section class="presence-container--flex">
     <SeasonCard v-for="season in seasons" :key="season.id"
-                :season="season" :current-season-id="currentSeasonId" @delete-season="deleteSeason" />
+                :season="season" :current-season-id="currentSeasonId"
+                :editable="canEdit" @delete-season="deleteSeason" />
     <MdcFAB icon-name="add" :link="{name: 'season:new'}"
             class="presence-fab__bottom-right--fixed" />
   </section>
@@ -23,6 +24,7 @@ export default defineComponent({
 
     const seasons = computed(() => store.getters['season/seasons'] as Season[]);
     const currentSeasonId = computed(() => store.getters['season/currentSeasonId'] as string);
+    const canEdit = computed(() => store.getters['auth/isEditor'] as boolean);
 
     const deleteSeason = (season: Season) => {
       if (confirm(`Delete Season "${season.name}"?`)) {
@@ -33,6 +35,7 @@ export default defineComponent({
     return {
       seasons,
       currentSeasonId,
+      canEdit,
       deleteSeason
     };
   }
