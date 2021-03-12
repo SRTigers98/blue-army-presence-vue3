@@ -4,7 +4,7 @@
       <MdcIcon icon-name="person" class="presence-members__card-icon" :class="{'active': member.active}" />
       <span>{{ member.lastName }}, {{ member.firstName }}</span>
     </h2>
-    <menu class="presence-members__card-actions">
+    <menu v-if="editable" class="presence-members__card-actions">
       <MdcButton mode="danger" @click="onDelete">
         <MdcIcon icon-name="delete" />
       </MdcButton>
@@ -28,6 +28,10 @@ export default defineComponent({
     member: {
       type: Object as PropType<Member>,
       required: true
+    },
+    editable: {
+      type: Boolean,
+      default: false
     }
   },
   setup(props, context) {

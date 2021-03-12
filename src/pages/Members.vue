@@ -1,8 +1,9 @@
 <template>
   <section class="presence-container--flex">
     <MemberCard v-for="member in members" :key="member.id"
-                :member="member" @delete-member="deleteMember" />
-    <MdcFAB icon-name="add" :link="{name: 'member:new'}"
+                :member="member" :editable="canEdit"
+                @delete-member="deleteMember" />
+    <MdcFAB v-if="canEdit" icon-name="add" :link="{name: 'member:new'}"
             class="presence-fab__bottom-right--fixed" />
   </section>
 </template>
@@ -29,9 +30,12 @@ export default defineComponent({
       }
     };
 
+    const canEdit = computed(() => store.getters['auth/isAdmin'] as boolean);
+
     return {
       members,
-      deleteMember
+      deleteMember,
+      canEdit
     };
   }
 });
