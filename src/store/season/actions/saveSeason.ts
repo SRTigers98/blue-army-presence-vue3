@@ -14,7 +14,7 @@ export default async function (context: ActionContext<SeasonModule, SeasonModule
 
   if (payload.isCurrentSeason) {
     await firebaseInstance.database().ref('currentSeasonId')
-      .set(payload.id);
+      .set(seasonRef.key);
   } else if (context.getters.currentSeasonId === payload.id) {
     await firebaseInstance.database().ref('currentSeasonId')
       .remove();
