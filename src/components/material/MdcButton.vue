@@ -5,6 +5,12 @@
       <slot />
     </span>
   </router-link>
+  <a v-else-if="!!href && !disabled" :href="href" :class="buttonClass">
+    <span class="mdc-button__ripple" />
+    <span class="mdc-button__label">
+      <slot />
+    </span>
+  </a>
   <button v-else :class="buttonClass" :disabled="disabled">
     <span class="mdc-button__ripple" />
     <span class="mdc-button__label">
@@ -17,7 +23,7 @@
 import { computed, defineComponent, PropType } from 'vue';
 import { LocationAsRelativeRaw } from 'vue-router';
 
-type MdcButtonMode = 'primary' | 'outlined' | 'danger';
+type MdcButtonMode = 'primary' | 'outlined' | 'danger' | 'csv';
 
 function getButtonModeClass(buttonMode: MdcButtonMode): string {
   switch (buttonMode) {
@@ -27,6 +33,8 @@ function getButtonModeClass(buttonMode: MdcButtonMode): string {
       return 'mdc-button--outlined';
     case 'danger':
       return 'mdc-button--outlined presence-button--danger';
+    case 'csv':
+      return 'mdc-button--outlined presence-button--csv';
     default:
       return '';
   }
@@ -40,6 +48,9 @@ export default defineComponent({
     },
     link: {
       type: Object as PropType<LocationAsRelativeRaw>
+    },
+    href: {
+      type: String
     },
     disabled: {
       type: Boolean,
@@ -61,5 +72,9 @@ export default defineComponent({
 
 .presence-button--danger {
   color: presence-color.$error !important;
+}
+
+.presence-button--csv {
+  color: presence-color.$secondary !important;
 }
 </style>

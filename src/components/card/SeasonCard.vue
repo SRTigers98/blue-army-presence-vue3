@@ -8,6 +8,7 @@
       </MdcButton>
       <MdcButton v-if="editable" mode="outlined" :link="editLink">Edit</MdcButton>
       <MdcButton :link="gamesLink">Open</MdcButton>
+      <CSVDownloadButton :season="season" />
     </nav>
   </MdcCard>
 </template>
@@ -15,13 +16,15 @@
 <script lang="ts">
 import { computed, defineComponent, PropType } from 'vue';
 import { MdcButton, MdcCard, MdcIcon } from '../material';
+import { CSVDownloadButton } from './util';
 import { Season } from '../../types';
 
 export default defineComponent({
   components: {
     MdcCard,
     MdcIcon,
-    MdcButton
+    MdcButton,
+    CSVDownloadButton
   },
   props: {
     season: {
