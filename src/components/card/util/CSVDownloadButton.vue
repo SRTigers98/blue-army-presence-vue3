@@ -22,17 +22,18 @@ export default defineComponent({
   },
   setup(props) {
     const csvDownload = computed(() => {
-      const csvData = props.season.games
+      const gamesData = props.season.games
           .flatMap(game => game.presentMembers.map(member => ({
             opponent: game.opponent,
             home: game.home,
             mode: game.mode,
             date: game.date.toJSON().substring(0, 10),
-            presentMembers: member
+            presentMember: member
           })))
           .map(entry => Object.values(entry)
               .map(val => val.toString())
-              .join(','))
+              .join(','));
+      const csvData = ['Opponent,Home,Mode,Date,PresentMember'].concat(gamesData)
           .join('\n');
       return `data:text/csv;charset=utf-8,${csvData}`;
     });
