@@ -2,7 +2,8 @@
   <section class="presence-container--flex">
     <SeasonCard v-for="season in seasons" :key="season.id"
                 :season="season" :current-season-id="currentSeasonId"
-                :editable="canEdit" @delete-season="deleteSeason" />
+                :members="members" :editable="canEdit"
+                @delete-season="deleteSeason" />
     <MdcFAB v-if="canEdit" icon-name="add" :link="{name: 'season:new'}"
             class="presence-fab__bottom-right--fixed" />
   </section>
@@ -12,7 +13,7 @@
 import { computed, defineComponent } from 'vue';
 import { useStore } from 'vuex';
 import { MdcFAB, SeasonCard } from '../components';
-import { Season } from '../types';
+import { Member, Season } from '../types';
 
 export default defineComponent({
   components: {
@@ -24,6 +25,7 @@ export default defineComponent({
 
     const seasons = computed(() => store.getters['season/seasons'] as Season[]);
     const currentSeasonId = computed(() => store.getters['season/currentSeasonId'] as string);
+    const members = computed(() => store.getters['member/members'] as Member[])
     const canEdit = computed(() => store.getters['auth/isEditor'] as boolean);
 
     const deleteSeason = (season: Season) => {
@@ -35,6 +37,7 @@ export default defineComponent({
     return {
       seasons,
       currentSeasonId,
+      members,
       canEdit,
       deleteSeason
     };

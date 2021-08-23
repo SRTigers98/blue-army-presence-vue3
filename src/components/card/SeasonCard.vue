@@ -8,7 +8,7 @@
       </MdcButton>
       <MdcButton v-if="editable" mode="outlined" :link="editLink">Edit</MdcButton>
       <MdcButton :link="gamesLink">Open</MdcButton>
-      <CSVDownloadButton :season="season" />
+      <CSVDownloadButton :season="season" :members="members" />
     </nav>
   </MdcCard>
 </template>
@@ -17,7 +17,7 @@
 import { computed, defineComponent, PropType } from 'vue';
 import { MdcButton, MdcCard, MdcIcon } from '../material';
 import { CSVDownloadButton } from './util';
-import { Season } from '../../types';
+import { Member, Season } from '../../types';
 
 export default defineComponent({
   components: {
@@ -33,6 +33,10 @@ export default defineComponent({
     },
     currentSeasonId: {
       type: String
+    },
+    members: {
+      type: Array as PropType<Member[]>,
+      required: true
     },
     editable: {
       type: Boolean,

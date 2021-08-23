@@ -7,7 +7,7 @@
 <script lang="ts">
 import { computed, defineComponent, PropType } from 'vue';
 import { MdcButton, MdcIcon } from '@/components/material'
-import { Season } from '@/types';
+import { Member, Season } from '@/types';
 
 export default defineComponent({
   components: {
@@ -18,18 +18,27 @@ export default defineComponent({
     season: {
       type: Object as PropType<Season>,
       required: true
+    },
+    members: {
+      type: Array as PropType<Member[]>,
+      required: true
     }
   },
   setup(props) {
     const csvDownload = computed(() => {
       const gamesData = props.season.games
-          .flatMap(game => game.presentMembers.map(member => ({
-            opponent: game.opponent,
-            home: game.home,
-            mode: game.mode,
-            date: game.date.toJSON().substring(0, 10),
-            presentMember: member
-          })))
+          .flatMap(game => game.presentMembers.map(memberId => {
+            const presentMember = props.members.find(m => m.id === memberId);
+            return {
+              opponent: game.opponent,
+              home: game.home,
+              mode: game.mode,
+              date: game.date.toJSON().substring(0, 10),
+              presentMember: presentMember
+                  ? `${presentMember.lastName} ${presentMember.firstName}`
+                  : memberId
+            };
+          }))
           .map(entry => Object.values(entry)
               .map(val => val.toString())
               .join(','));
