@@ -7,7 +7,8 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "localDeploy": "npm run build && firebase deploy",
-    "localDeploy:preview": "npm run build && firebase hosting:channel:deploy vue3"
+    "localDeploy:preview": "npm run build && firebase hosting:channel:deploy vue3",
+    "browserslist:update": "browserslist --update-db"
   },
   "dependencies": {
     "core-js": "^3.6.5",
