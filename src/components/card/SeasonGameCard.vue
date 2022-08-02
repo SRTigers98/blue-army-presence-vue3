@@ -48,6 +48,8 @@ export default defineComponent({
           return 'event';
         case 'playoffs':
           return 'whatshot';
+        case 'CHL':
+          return 'public';
         default:
           return 'error';
       }

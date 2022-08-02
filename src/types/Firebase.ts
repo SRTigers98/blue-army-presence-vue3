@@ -12,7 +12,7 @@ export interface SeasonDto {
 export interface SeasonGameDto {
   opponent: string;
   home: boolean;
-  mode: 'regular' | 'playoffs';
+  mode: 'regular' | 'playoffs' | 'CHL';
   date: string;
   presentMembers: string[];
 }
